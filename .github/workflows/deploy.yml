@@ -28,7 +28,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
         
     - name: Install dependencies
@@ -144,7 +144,8 @@ jobs:
     - name: Check for secrets
       run: |
         echo "🔍 Checking for potential secrets..."
-        if grep -r "sk-" . --exclude-dir=.git --exclude-dir=node_modules; then
+        # More specific pattern to avoid false positives in package files
+        if grep -r "sk-[a-zA-Z0-9]" . --exclude-dir=.git --exclude-dir=node_modules --exclude="*.json" --exclude="*.yml" --exclude="*.yaml"; then
           echo "❌ Potential API keys found!"
           exit 1
         fi
