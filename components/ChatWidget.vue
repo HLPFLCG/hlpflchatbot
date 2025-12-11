@@ -82,7 +82,7 @@ export default {
   props: {
     apiUrl: {
       type: String,
-      default: 'https://api.hlpfl.io/api/chat'
+      default: 'https://hlpfl.io/api/chat'
     },
     position: {
       type: String,

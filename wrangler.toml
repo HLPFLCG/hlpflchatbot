@@ -5,12 +5,12 @@ compatibility_date = "2023-12-01"
 # Variables for different environments
 [env.production]
 routes = [
-  { pattern = "api.hlpfl.io/*", zone_name = "hlpfl.io" }
+  { pattern = "hlpfl.io/*", zone_name = "hlpfl.io" }
 ]
 
 [env.staging]
 routes = [
-  { pattern = "api-staging.hlpfl.io/*", zone_name = "hlpfl.io" }
+  { pattern = "staging.hlpfl.io/*", zone_name = "hlpfl.io" }
 ]
 
 # KV namespace for storing conversation data (optional)

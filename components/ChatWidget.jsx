@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const ChatWidget = ({ 
-  apiUrl = 'https://api.hlpfl.io/api/chat', 
+  apiUrl = 'https://hlpfl.io/api/chat', 
   position = 'bottom-right',
   primaryColor = '#667eea',
   showBranding = true 
