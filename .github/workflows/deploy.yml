@@ -1,0 +1,59 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Workers
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Wrangler
+      run: npm install -g wrangler
+
+    - name: Validate worker syntax
+      run: wrangler dev --dry-run
+
+    - name: Deploy to Cloudflare Workers
+      run: wrangler deploy
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    - name: Get Worker URL
+      id: worker-url
+      run: |
+        WORKER_URL="https://hlpfl-chatbot.${{ github.ref == 'refs/heads/main' && github.actor || github.actor }}.workers.dev"
+        echo "url=$WORKER_URL" >> $GITHUB_OUTPUT
+
+    - name: Display deployment info
+      run: |
+        echo "🚀 Worker deployed successfully!"
+        echo "📍 API URL: ${{ steps.worker-url.outputs.url }}/api/chat"
+        echo "📍 Health Check: ${{ steps.worker-url.outputs.url }}/api/health"
+        echo "📍 Documentation: ${{ steps.worker-url.outputs.url }}/api/docs"
+
+    - name: Test deployment
+      run: |
+        curl -f "${{ steps.worker-url.outputs.url }}/api/health" || exit 1
+        echo "✅ Health check passed"
+        
+        curl -X POST "${{ steps.worker-url.outputs.url }}/api/chat" \
+          -H "Content-Type: application/json" \
+          -d '{"message":"Hello from CI/CD"}' || exit 1
+        echo "✅ Chat API test passed"
