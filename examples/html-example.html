@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLPFL Records - Sample Website with Chat Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.2em;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .cta h2 {
+            margin-top: 0;
+        }
+        
+        .cta button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta button:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+    <!-- Include the chat widget CSS -->
+    <link rel="stylesheet" href="../chat-widget.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HLPFL Records</h1>
+            <p>Grand Rapids, Michigan - Home for Independent Artists</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="card">
+                <h3>Artist Development</h3>
+                <p>Comprehensive artist development programs including vocal coaching, performance training, and brand development to help you succeed in the music industry.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Music Production</h3>
+                <p>Professional music production services with state-of-the-art recording facilities and experienced producers to bring your vision to life.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Global Distribution</h3>
+                <p>Worldwide music distribution across 150+ streaming platforms including Spotify, Apple Music, and YouTube Music.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Ready to Take Your Music Career to the Next Level?</h2>
+            <p>Have questions about our services? Need guidance on getting started?</p>
+            <p>Our AI assistant is here to help 24/7!</p>
+            <button onclick="openChat()">Start Chatting</button>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <h3>Publishing & Rights</h3>
+                <p>Music publishing administration and rights management services including copyright registration and royalty collection.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Marketing & Promotion</h3>
+                <p>Strategic marketing and promotional campaigns for music releases including digital marketing and playlist pitching.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Career Management</h3>
+                <p>Long-term career management and strategic planning for artists including tour management and brand partnerships.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 HLPFL Records. Grand Rapids, Michigan | 
+            <a href="mailto:info@hlpfl.org" style="color: #667eea;">info@hlpfl.org</a> | 
+            (616) 555-0123</p>
+        </div>
+    </footer>
+
+    <!-- Include the chat widget JavaScript -->
+    <script src="../chat-widget.js"></script>
+    
+    <script>
+        // Custom initialization with specific API URL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the chat widget
+            const chatWidget = new HLPFLChatWidget({
+                apiUrl: 'https://hlpfl-chatbot.your-subdomain.workers.dev',
+                position: 'bottom-right'
+            });
+            
+            // Make it globally accessible
+            window.chatWidget = chatWidget;
+        });
+        
+        // Function to open chat from CTA button
+        function openChat() {
+            if (window.chatWidget) {
+                window.chatWidget.open();
+            }
+        }
+    </script>
+</body>
+</html>

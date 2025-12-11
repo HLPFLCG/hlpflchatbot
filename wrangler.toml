@@ -1,0 +1,32 @@
+name = "hlpfl-chatbot"
+main = "worker.js"
+compatibility_date = "2023-12-01"
+
+# Variables for different environments
+[env.production]
+routes = [
+  { pattern = "api.hlpfl.io/*", zone_name = "hlpfl.io" }
+]
+
+[env.staging]
+routes = [
+  { pattern = "api-staging.hlpfl.io/*", zone_name = "hlpfl.io" }
+]
+
+# KV namespace for storing conversation data (optional)
+# [[kv_namespaces]]
+# binding = "CHAT_KV"
+# id = "your-kv-namespace-id"
+# preview_id = "your-preview-kv-namespace-id"
+
+# D1 database for analytics (optional)
+# [[d1_databases]]
+# binding = "CHAT_DB"
+# database_name = "hlpfl-chatbot-db"
+# database_id = "your-database-id"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "development"
+COMPANY_NAME = "HLPFL Records"
+LOCATION = "Grand Rapids, Michigan"
