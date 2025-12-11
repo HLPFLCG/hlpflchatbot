@@ -1,6 +1,6 @@
 class HLPFLChatWidget {
   constructor(options = {}) {
-    this.apiUrl = options.apiUrl || 'https://hlpfl-chatbot.your-subdomain.workers.dev';
+    this.apiUrl = options.apiUrl || 'https://hlpfl.io/api/chat';
     this.container = options.container || null;
     this.position = options.position || 'bottom-right';
     this.conversationHistory = [];
