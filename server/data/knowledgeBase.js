@@ -2,7 +2,7 @@ const knowledgeBase = {
   company: {
     name: "HLPFL Records",
     founded: 2009,
-    location: "Nashville, Tennessee",
+    location: "Grand Rapids, Michigan",
     description: "Independent record label specializing in artist development and global music distribution",
     stats: {
       artists: "50+",
@@ -60,7 +60,7 @@ const knowledgeBase = {
     },
     "contact_info": {
       question: "How can I contact HLPFL Records?",
-      answer: "You can reach us at: Email: info@hlpfl.org, Phone: (615) 555-0123, Address: 123 Music Row, Nashville, TN 37203. Business hours: Monday-Friday, 9 AM - 6 PM CST."
+      answer: "You can reach us at: Email: info@hlpfl.org, Phone: (616) 555-0123, Address: 456 Fulton Street, Grand Rapids, MI 49503. Business hours: Monday-Friday, 9 AM - 6 PM EST."
     }
   },
   
@@ -90,9 +90,9 @@ const knowledgeBase = {
     ],
     
     contact: [
-      "You can reach HLPFL Records at info@hlpfl.org or (615) 555-0123. Our office is located at 123 Music Row, Nashville, TN 37203.",
-      "Contact us via email at info@hlpfl.org or call (615) 555-0123. We're available Monday-Friday, 9 AM - 6 PM CST.",
-      "Get in touch with us at info@hlpfl.org or visit our office on Music Row in Nashville. We'd love to hear from you!"
+      "You can reach HLPFL Records at info@hlpfl.org or (616) 555-0123. Our office is located at 456 Fulton Street, Grand Rapids, MI 49503.",
+      "Contact us via email at info@hlpfl.org or call (616) 555-0123. We're available Monday-Friday, 9 AM - 6 PM EST.",
+      "Get in touch with us at info@hlpfl.org or visit our office downtown in Grand Rapids. We'd love to hear from you!"
     ],
     
     fallback: [

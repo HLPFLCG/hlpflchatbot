@@ -1,0 +1,50 @@
+{
+  "faqs": {
+    "artist_submissions": {
+      "how_to_submit": {
+        "question": "How do I submit my music to HLPFL Records?",
+        "answer": "You can submit your music through our online submission form at hlpfl.org/submit. Please include 2-3 of your best tracks, a brief bio, and links to your social media profiles."
+      },
+      "submission_requirements": {
+        "question": "What are your submission requirements?",
+        "answer": "We accept submissions in all genres. Please ensure your tracks are professionally recorded and mixed, include high-quality artwork, and provide information about your musical background and career goals."
+      },
+      "response_time": {
+        "question": "How long does it take to hear back about submissions?",
+        "answer": "We review all submissions carefully and typically respond within 2-4 weeks. If you haven't heard back after 4 weeks, feel free to follow up via email."
+      },
+      "unsolicited_submissions": {
+        "question": "Do you accept unsolicited submissions?",
+        "answer": "Yes! We actively review all submissions through our official submission portal. We're always looking for talented artists to join our roster."
+      }
+    },
+    "services": {
+      "cost": {
+        "question": "How much do your services cost?",
+        "answer": "Our pricing varies depending on the specific services and scope of work. We offer customized packages based on each artist's needs and goals. Contact us for a personalized consultation and quote."
+      },
+      "contracts": {
+        "question": "What kind of contracts do you offer?",
+        "answer": "We offer flexible contract arrangements including development deals, distribution agreements, and traditional record deals. All contracts are artist-friendly and transparent."
+      },
+      "royalties": {
+        "question": "What's your royalty split?",
+        "answer": "Royalty splits vary by deal type and artist level. We believe in fair compensation and typically offer industry-leading royalty rates. Specific terms are discussed during contract negotiations."
+      }
+    },
+    "company": {
+      "founded": {
+        "question": "When was HLPFL Records founded?",
+        "answer": "HLPFL Records was founded in 2009 in Nashville, Tennessee. We've been serving independent artists for over 15 years."
+      },
+      "artists": {
+        "question": "How many artists are on your roster?",
+        "answer": "We currently work with 50+ artists across various genres. We focus on quality over quantity and provide personalized attention to each artist."
+      },
+      "success_stories": {
+        "question": "Can you share some success stories?",
+        "answer": "Our artists have achieved over 1 billion streams collectively, landed major playlist placements, and secured record deals with major labels. Many have built sustainable careers in the music industry."
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 # HLPFL Records AI Chatbot
 
-A sophisticated AI chatbot built for HLPFL Records, a Nashville-based independent record label. This chatbot assists artists with information about services, music submissions, company information, and career advice.
+A sophisticated AI chatbot built for HLPFL Records, a Grand Rapids-based independent record label. This chatbot assists artists with information about services, music submissions, company information, and career advice.
 
 ## 🎵 About HLPFL Records
 
-Founded in 2009 in Nashville, Tennessee, HLPFL Records is an independent record label specializing in artist development and global music distribution. We support 50+ artists with 200+ releases and over 1 billion streams worldwide.
+Founded in 2009 in Grand Rapids, Michigan, HLPFL Records is an independent record label specializing in artist development and global music distribution. We support 50+ artists with 200+ releases and over 1 billion streams worldwide.
 
 ## 🤖 Chatbot Features
 
@@ -182,7 +182,30 @@ This chatbot is designed to be easily adapted for any industry:
    vercel
    ```
 
-### Option 4: Traditional Hosting
+### Option 4: Cloudflare Pages + Workers (Recommended)
+Perfect combination of GitHub for source control and Cloudflare for hosting:
+
+1. **Deploy to Cloudflare Pages** (Frontend)
+   ```bash
+   # Build the app
+   cd client && npm run build
+   
+   # Use Cloudflare Dashboard with GitHub integration
+   # Build command: cd client && npm run build
+   # Build output: client/build
+   ```
+
+2. **Deploy to Cloudflare Workers** (API)
+   ```bash
+   # Install Wrangler
+   npm install -g wrangler
+   wrangler login
+   wrangler deploy
+   ```
+
+3. **Detailed Instructions**: See `CLOUDFLARE_DEPLOYMENT.md`
+
+### Option 5: Traditional Hosting
 1. Build the application:
    ```bash
    npm run build
@@ -277,7 +300,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions about this chatbot or HLPFL Records:
 - **Email**: info@hlpfl.org
-- **Phone**: (615) 555-0123
+- **Phone**: (616) 555-0123
+- **Address**: 456 Fulton Street, Grand Rapids, MI 49503
 - **Website**: https://hlpfl.org
 
 ## 🔮 Future Enhancements

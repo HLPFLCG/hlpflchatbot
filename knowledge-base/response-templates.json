@@ -1,0 +1,39 @@
+{
+  "templates": {
+    "greeting": {
+      "friendly": "Hey there! 👋 Welcome to HLPFL Records. I'm here to help you learn about our record label and answer any questions about artist development, submissions, or our services. What can I help you with today?",
+      "professional": "Welcome to HLPFL Records. I'm your virtual assistant and I'm here to provide information about our record label services, artist submissions, and career development opportunities. How may I assist you?"
+    },
+    "artist_submission": {
+      "process": "Great to hear you're interested in submitting your music! 🎵 Here's how it works: Submit 2-3 of your best tracks through our online form at hlpfl.org/submit, along with your bio and social links. We review all submissions personally and typically respond within 2-4 weeks.",
+      "requirements": "For submissions, we look for professionally recorded tracks, high-quality artwork, and artists who are serious about their music career. Include your best work that represents your unique sound and style.",
+      "genre": "We work with artists across all genres! From indie rock to hip-hop, country to electronic - we're more interested in quality and potential than specific genres. What style of music do you create?"
+    },
+    "services": {
+      "development": "Our artist development program is comprehensive! We offer vocal coaching, songwriting workshops, performance training, and brand development. Programs typically run 6-12 months and are customized to each artist's needs. 🎤",
+      "production": "We provide full production services from pre-production to final master. This includes professional recording, mixing, mastering, and access to our state-of-the-art facilities and session musicians. 🎙️",
+      "distribution": "We distribute to 150+ platforms including Spotify, Apple Music, and Amazon Music. This includes Content ID protection, analytics, and playlist pitching strategies to maximize your reach. 📊",
+      "marketing": "Our marketing services include social media campaigns, PR, music video promotion, radio promotion, and tour support. We create customized strategies for each release to ensure maximum impact. 📱"
+    },
+    "company_info": {
+      "about": "HLPFL Records was founded in 2009 in Nashville, Tennessee. We're an independent label focused on artist development and quality music production. We've worked with 50+ artists, released 200+ projects, and achieved over 1 billion streams! 🎸",
+      "differentiators": "What makes us different? We take an artist-first approach with transparent business practices, comprehensive career guidance, and industry connections. We believe in building sustainable careers, not just releasing singles. 🌟",
+      "location": "We're based in Nashville, Tennessee - the heart of the music industry! Our office is at 123 Music Row, and we're open Monday-Friday 9AM-5PM CST. Stop by sometime or schedule a virtual meeting! 🏢"
+    },
+    "contact": {
+      "general": "You can reach us at info@hlpfl.org or call 615-555-0123. Our office hours are Monday-Friday 9AM-5PM CST. We typically respond to emails within 24 hours. 📧",
+      "submissions": "For music submissions, please use our online form at hlpfl.org/submit. This ensures your submission gets to the right team member and we can track it properly. 📝",
+      "business": "For business inquiries, partnerships, or press, please email business@hlpfl.org and we'll connect you with the right team member. 💼"
+    },
+    "career_advice": {
+      "beginner": "Starting out in music? Focus on three things: 1) Write and record consistently, 2) Build your online presence and fanbase, 3) Network with other artists and industry professionals. Quality and persistence are key! 🎵",
+      "networking": "Nashville's amazing for networking! Attend open mics, songwriting circles, and industry events. Don't be afraid to reach out to other artists - collaboration is how you grow. Social media is also great for connecting! 🤝",
+      "business": "Treat your music like a business from day one. Understand royalties, publishing rights, and contracts. Build an email list, engage with fans regularly, and diversify your income streams through touring, merch, and licensing. 💡"
+    },
+    "fallback": {
+      "unknown": "I'm not quite sure how to help with that, but I'm here to answer questions about HLPFL Records, artist submissions, our services, or music industry advice. What would you like to know?",
+      "confused": "I want to make sure I give you the best information! Are you asking about: 1) Submitting music, 2) Our services, 3) Company information, 4) Contact details, or 5) Music career advice?",
+      "escalation": "For specific questions about your situation or detailed contract information, I'd recommend connecting with our team directly at info@hlpfl.org. They can provide personalized guidance for your unique needs!"
+    }
+  }
+}

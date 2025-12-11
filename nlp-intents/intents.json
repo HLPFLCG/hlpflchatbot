@@ -1,0 +1,75 @@
+{
+  "intents": {
+    "greeting": {
+      "keywords": ["hello", "hi", "hey", "greetings", "welcome", "good morning", "good afternoon", "howdy", "yo"],
+      "responses": ["greeting.friendly"],
+      "entities": ["time_of_day"]
+    },
+    "artist_submission": {
+      "keywords": ["submit", "submission", "demo", "music", "song", "track", "send music", "apply", "artist", "band", "interested"],
+      "sub_intents": {
+        "process": ["how", "process", "steps", "way", "method"],
+        "requirements": ["requirements", "need", "what", "criteria", "qualifications"],
+        "timeline": ["long", "when", "response time", "hear back", "timeline"],
+        "genre": ["genre", "style", "type of music", "sound", "accept"]
+      },
+      "responses": ["artist_submission.process", "artist_submission.requirements", "artist_submission.genre"]
+    },
+    "services": {
+      "keywords": ["services", "offer", "provide", "help", "support", "development", "production", "distribution", "marketing", "promotion"],
+      "sub_intents": {
+        "development": ["development", "coaching", "training", "artist development", "vocal"],
+        "production": ["production", "recording", "studio", "mixing", "mastering", "music production"],
+        "distribution": ["distribution", "streaming", "spotify", "apple music", "platforms", "stores"],
+        "marketing": ["marketing", "promotion", "advertising", "social media", "campaign", "publicity"]
+      },
+      "responses": ["services.development", "services.production", "services.distribution", "services.marketing"]
+    },
+    "company_info": {
+      "keywords": ["company", "about", "information", "who", "what", "history", "founded", "hlpfl", "record label"],
+      "sub_intents": {
+        "about": ["about", "who", "what", "company"],
+        "differentiators": ["different", "special", "unique", "why", "compare", "better"],
+        "location": ["location", "where", "address", "office", "nashville"]
+      },
+      "responses": ["company_info.about", "company_info.differentiators", "company_info.location"]
+    },
+    "contact": {
+      "keywords": ["contact", "reach", "email", "phone", "address", "call", "talk", "speak", "connect"],
+      "sub_intents": {
+        "general": ["contact", "reach", "general", "talk", "speak"],
+        "submissions": ["submissions", "submit music", "demo", "send"],
+        "business": ["business", "partnership", "press", "media", "inquiry"]
+      },
+      "responses": ["contact.general", "contact.submissions", "contact.business"]
+    },
+    "career_advice": {
+      "keywords": ["advice", "tips", "help", "guidance", "career", "music career", "how to", "beginner", "starting", "networking"],
+      "sub_intents": {
+        "beginner": ["beginner", "starting", "new", "first time", "how to start"],
+        "networking": ["networking", "connections", "meet people", "industry", "collaborate"],
+        "business": ["business", "money", "career", "professional", "industry advice"]
+      },
+      "responses": ["career_advice.beginner", "career_advice.networking", "career_advice.business"]
+    },
+    "goodbye": {
+      "keywords": ["bye", "goodbye", "see you", "later", "farewell", "thanks", "thank you", "appreciate"],
+      "responses": ["farewell.friendly"]
+    }
+  },
+  "entities": {
+    "time_of_day": {
+      "morning": ["morning", "am", "sunrise"],
+      "afternoon": ["afternoon", "pm", "daytime"],
+      "evening": ["evening", "night", "tonight"]
+    },
+    "genre": {
+      "rock": ["rock", "alternative", "indie rock"],
+      "pop": ["pop", "mainstream", "top 40"],
+      "hiphop": ["hip hop", "rap", "trap"],
+      "country": ["country", "nashville", "americana"],
+      "electronic": ["electronic", "edm", "techno", "house"],
+      "folk": ["folk", "acoustic", "singer-songwriter"]
+    }
+  }
+}

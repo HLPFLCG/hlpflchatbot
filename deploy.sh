@@ -127,6 +127,38 @@ deploy_vercel() {
     print_status "Ready for Vercel deployment. Run 'vercel' to deploy."
 }
 
+# Deploy to Cloudflare
+deploy_cloudflare() {
+    echo "Deploying to Cloudflare..."
+    
+    # Check if Wrangler CLI is installed
+    if ! command -v wrangler &> /dev/null; then
+        print_error "Wrangler CLI is not installed. Please install it first."
+        print_status "Install with: npm install -g wrangler"
+        exit 1
+    fi
+    
+    # Build the React app
+    cd client
+    npm run build
+    cd ..
+    
+    # Create Cloudflare Pages configuration
+    if [ ! -f wrangler.toml ]; then
+        echo "name = &quot;hlpfl-chatbot&quot;" > wrangler.toml
+        echo "compatibility_date = &quot;2023-12-01&quot;" >> wrangler.toml
+        print_status "Created wrangler.toml configuration"
+    fi
+    
+    print_status "Ready for Cloudflare deployment!"
+    print_warning "Next steps:"
+    echo "1. Login: wrangler login"
+    echo "2. Deploy Pages: Use Cloudflare Dashboard with GitHub integration"
+    echo "3. Or deploy Workers: wrangler deploy"
+    echo ""
+    echo "See CLOUDFLARE_DEPLOYMENT.md for detailed instructions"
+}
+
 # Local development setup
 setup_dev() {
     echo "Setting up local development environment..."
@@ -155,7 +187,8 @@ show_menu() {
     echo "3) Deploy to GitHub Pages (frontend only)"
     echo "4) Deploy to Heroku"
     echo "5) Deploy to Vercel"
-    echo "6) Exit"
+    echo "6) Deploy to Cloudflare Pages + Workers"
+    echo "7) Exit"
     echo ""
     read -p "Enter your choice (1-6): " choice
 }
@@ -190,6 +223,10 @@ main() {
                 break
                 ;;
             6)
+                deploy_cloudflare
+                break
+                ;;
+            7)
                 echo "Goodbye! 🎵"
                 exit 0
                 ;;

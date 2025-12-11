@@ -1,0 +1,27 @@
+{
+  "company": {
+    "name": "HLPFL Records",
+    "founded": 2009,
+    "location": "Nashville, Tennessee",
+    "description": "Independent record label focused on artist development and quality music production",
+    "statistics": {
+      "artists": "50+",
+      "releases": "200+",
+      "streams": "1B+",
+      "years_in_business": 15
+    },
+    "differentiators": [
+      "Artist-first approach to development",
+      "Comprehensive career guidance",
+      "Quality over quantity releases",
+      "Industry connections and networking",
+      "Transparent business practices"
+    ],
+    "contact": {
+      "email": "info@hlpfl.org",
+      "phone": "615-555-0123",
+      "address": "123 Music Row, Nashville, TN 37203",
+      "office_hours": "Monday-Friday 9AM-5PM CST"
+    }
+  }
+}
