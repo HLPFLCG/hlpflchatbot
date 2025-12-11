@@ -127,9 +127,9 @@ deploy_vercel() {
     print_status "Ready for Vercel deployment. Run 'vercel' to deploy."
 }
 
-# Deploy to Cloudflare
+# Deploy to Cloudflare Workers (API-First)
 deploy_cloudflare() {
-    echo "Deploying to Cloudflare..."
+    echo "Deploying to Cloudflare Workers (API-First)..."
     
     # Check if Wrangler CLI is installed
     if ! command -v wrangler &> /dev/null; then
@@ -138,25 +138,64 @@ deploy_cloudflare() {
         exit 1
     fi
     
-    # Build the React app
-    cd client
-    npm run build
-    cd ..
+    # Check if worker.js exists
+    if [ ! -f "worker.js" ]; then
+        print_error "worker.js not found. Make sure you're in the correct directory."
+        exit 1
+    fi
     
-    # Create Cloudflare Pages configuration
-    if [ ! -f wrangler.toml ]; then
-        echo "name = &quot;hlpfl-chatbot&quot;" > wrangler.toml
-        echo "compatibility_date = &quot;2023-12-01&quot;" >> wrangler.toml
+    # Create wrangler.toml if it doesn't exist
+    if [ ! -f "wrangler.toml" ]; then
+        print_warning "wrangler.toml not found. Creating default configuration..."
+        cat > wrangler.toml << EOF
+name = "hlpfl-chatbot"
+main = "worker.js"
+compatibility_date = "2023-12-01"
+
+[env.production]
+routes = [
+  { pattern = "api.hlpfl.org/*", zone_name = "hlpfl.org" }
+]
+
+[vars]
+ENVIRONMENT = "development"
+COMPANY_NAME = "HLPFL Records"
+LOCATION = "Grand Rapids, Michigan"
+EOF
         print_status "Created wrangler.toml configuration"
     fi
     
-    print_status "Ready for Cloudflare deployment!"
-    print_warning "Next steps:"
-    echo "1. Login: wrangler login"
-    echo "2. Deploy Pages: Use Cloudflare Dashboard with GitHub integration"
-    echo "3. Or deploy Workers: wrangler deploy"
-    echo ""
-    echo "See CLOUDFLARE_DEPLOYMENT.md for detailed instructions"
+    print_status "Login to Cloudflare..."
+    wrangler login
+    
+    print_status "Deploying to Cloudflare Workers..."
+    if wrangler deploy; then
+        print_status "✅ Successfully deployed to Cloudflare Workers!"
+        
+        # Get the worker URL
+        WORKER_URL=$(wrangler whoami 2>/dev/null | grep -o 'https://[^[:space:]]*workers.dev' | head -1)
+        if [ -z "$WORKER_URL" ]; then
+            WORKER_URL="https://hlpfl-chatbot.your-subdomain.workers.dev"
+        fi
+        
+        print_status "Your API is available at:"
+        echo "  📍 Chat API: $WORKER_URL/api/chat"
+        echo "  📍 Health Check: $WORKER_URL/api/health"
+        echo "  📍 Documentation: $WORKER_URL/api/docs"
+        echo ""
+        print_warning "For embedding in your website:"
+        echo "1. Update the apiUrl in chat-widget.js to: $WORKER_URL"
+        echo "2. Add the widget files to your website"
+        echo "3. See API_EMBEDDING_GUIDE.md for detailed instructions"
+        echo ""
+        print_status "For custom domain setup:"
+        echo "1. Add your domain to Cloudflare"
+        echo "2. Update routes in wrangler.toml"
+        echo "3. Deploy with: wrangler deploy --env production"
+    else
+        print_error "Deployment failed. Check the error messages above."
+        exit 1
+    fi
 }
 
 # Local development setup
