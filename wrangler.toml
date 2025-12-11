@@ -5,7 +5,7 @@ compatibility_date = "2023-12-01"
 # Variables for different environments
 [env.production]
 routes = [
-  { pattern = "hlpfl.io/*", zone_name = "hlpfl.io" }
+  { pattern = "hlpfl.io/api/*", zone_name = "hlpfl.io" }
 ]
 
 [env.staging]
