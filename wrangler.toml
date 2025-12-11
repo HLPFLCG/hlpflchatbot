@@ -10,7 +10,7 @@ routes = [
 
 [env.staging]
 routes = [
-  { pattern = "api-staging.hlpfl.io/*", zone_name = "hlpfl.io" }
+  { pattern = "staging.hlpfl.io/api/*", zone_name = "hlpfl.io" }
 ]
 
 # KV namespace for storing conversation data (optional)

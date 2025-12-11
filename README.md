@@ -38,7 +38,22 @@ Founded in 2009 in Grand Rapids, Michigan, HLPFL Records is an independent recor
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Current Setup: hlpfl.io + hlpfl.org
+- **Main Website**: `hlpfl.org` (where you embed the chatbot)
+- **Chatbot API**: `https://hlpfl.io/api/chat` (where the API runs)
+
+### Option 1: Auto-Deploy to hlpfl.io (Recommended)
+1. Add Cloudflare API token to GitHub secrets: `CLOUDFLARE_API_TOKEN`
+2. Push to main branch: `git push origin main`
+3. API will auto-deploy to: `https://hlpfl.io/api/chat`
+4. Embed components in your hlpfl.org website
+
+### Option 2: Manual Deployment to hlpfl.io
+```bash
+./deploy-hlpfl-io.sh
+```
+
+### Option 3: Development Setup
 - Node.js 16+ installed
 - npm or yarn package manager
 - Git for version control
@@ -216,6 +231,17 @@ Perfect combination of GitHub for source control and Cloudflare for hosting:
 4. Configure environment variables
 
 ## 🔍 API Endpoints
+
+### Production (hlpfl.io)
+- **Chat API**: `https://hlpfl.io/api/chat`
+- **Health Check**: `https://hlpfl.io/api/health`
+- **Documentation**: `https://hlpfl.io/api/docs`
+- **Services**: `https://hlpfl.io/api/services`
+
+### Staging (staging.hlpfl.io)
+- **Chat API**: `https://staging.hlpfl.io/api/chat`
+- **Health Check**: `https://staging.hlpfl.io/api/health`
+- **Documentation**: `https://staging.hlpfl.io/api/docs`
 
 ### Chat API
 ```
