@@ -138,7 +138,7 @@ function generateResponse(intent, message, conversationHistory = []) {
       
     case 'company_info':
       if (message.toLowerCase().includes('founded') || message.toLowerCase().includes('history')) {
-        responseText = `HLPFL Records was founded in 2009 in Nashville, Tennessee. We've grown to support ${knowledgeBase.company.stats.artists} artists with ${knowledgeBase.company.stats.releases} releases and over ${knowledgeBase.company.stats.streams} streams worldwide.`;
+        responseText = `HLPFL Records was founded in 2009 in Grand Rapids, Michigan. We've grown to support ${knowledgeBase.company.stats.artists} artists with ${knowledgeBase.company.stats.releases} releases and over ${knowledgeBase.company.stats.streams} streams worldwide.`;
       } else if (message.toLowerCase().includes('mission')) {
         responseText = knowledgeBase.company.mission;
       } else {

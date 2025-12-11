@@ -31,7 +31,16 @@ cd hlpflchatbot
 ```
 **Result**: Frontend-only chatbot at `https://HLPFLCG.github.io/hlpflchatbot`
 
-### Option 2: Vercel (Recommended - Free)
+### Option 2: Cloudflare Pages + Workers (Recommended - Free)
+```bash
+git clone https://github.com/HLPFLCG/hlpflchatbot.git
+cd hlpflchatbot
+./deploy.sh
+# Choose option 6 for Cloudflare
+```
+**Result**: Full-stack chatbot with global CDN and SSL
+
+### Option 3: Vercel (Alternative - Free)
 ```bash
 git clone https://github.com/HLPFLCG/hlpflchatbot.git
 cd hlpflchatbot
@@ -124,6 +133,7 @@ This chatbot can be adapted for any industry:
 
 | Platform | Type | Cost | Complexity |
 |----------|------|------|------------|
+| Cloudflare Pages + Workers | Full Stack | Free | Easy |
 | GitHub Pages | Frontend Only | Free | Easy |
 | Vercel | Full Stack | Free Tier | Easy |
 | Netlify | Full Stack | Free Tier | Medium |
