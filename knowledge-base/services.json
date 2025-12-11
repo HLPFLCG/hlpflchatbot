@@ -1,0 +1,56 @@
+{
+  "services": {
+    "artist_development": {
+      "name": "Artist Development",
+      "description": "Comprehensive artist development program including vocal coaching, songwriting, and performance training",
+      "details": [
+        "Vocal coaching and technique improvement",
+        "Songwriting workshops and collaboration",
+        "Stage presence and performance training",
+        "Brand development and image consulting",
+        "Social media strategy and management"
+      ],
+      "duration": "6-12 month programs available",
+      "investment": "Custom pricing based on artist needs"
+    },
+    "production": {
+      "name": "Music Production",
+      "description": "Professional music production services from pre-production to final master",
+      "details": [
+        "Pre-production and song arrangement",
+        "Professional recording sessions",
+        "Mixing and mastering services",
+        "Session musicians and arrangements",
+        "State-of-the-art recording facilities"
+      ],
+      "turnaround": "2-8 weeks depending on project scope",
+      "investment": "Project-based pricing"
+    },
+    "distribution": {
+      "name": "Distribution Services",
+      "description": "Global music distribution across all major streaming platforms and digital stores",
+      "details": [
+        "Spotify, Apple Music, Amazon Music distribution",
+        "YouTube Content ID protection",
+        "Streaming analytics and reporting",
+        "Royalty collection and payment",
+        "Playlist pitching strategies"
+      ],
+      "coverage": "150+ digital platforms globally",
+      "terms": "Standard industry distribution terms"
+    },
+    "marketing": {
+      "name": "Marketing & Promotion",
+      "description": "Strategic marketing campaigns to maximize music reach and audience engagement",
+      "details": [
+        "Social media marketing campaigns",
+        "Public relations and press coverage",
+        "Music video production and promotion",
+        "Radio promotion and playlist pitching",
+        "Tour and live event support"
+      ],
+      "timeline": "Campaign-specific, typically 3-6 months",
+      "roi": "Trackable metrics and performance reporting"
+    }
+  }
+}

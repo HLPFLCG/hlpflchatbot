@@ -1,0 +1,29 @@
+{
+  "name": "hlpfl-chatbot",
+  "version": "1.0.0",
+  "description": "AI Chatbot for HLPFL Records - Nashville-based record label",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently &quot;npm run server&quot; &quot;npm run client&quot;",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "deploy": "npm run build && npm run deploy-gh-pages"
+  },
+  "keywords": [
+    "chatbot",
+    "ai",
+    "music",
+    "record-label",
+    "hlpfl",
+    "react",
+    "nodejs"
+  ],
+  "author": "HLPFL Records",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
