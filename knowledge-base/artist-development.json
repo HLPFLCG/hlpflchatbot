@@ -1,0 +1,152 @@
+{
+  "artist_development": {
+    "overview": "Comprehensive artist development program designed to transform talented musicians into successful, sustainable artists with global reach",
+    "services": {
+      "career_planning": {
+        "description": "Strategic career roadmap development tailored to each artist's unique goals and strengths",
+        "includes": [
+          "5-year career trajectory planning",
+          "Goal setting and milestone tracking",
+          "Market positioning and niche identification",
+          "Competitive analysis and differentiation strategy",
+          "Revenue stream diversification planning",
+          "Long-term sustainability planning"
+        ],
+        "process": [
+          "Initial consultation and vision assessment",
+          "SWOT analysis (Strengths, Weaknesses, Opportunities, Threats)",
+          "Market research and target audience identification",
+          "Strategic plan development with quarterly milestones",
+          "Regular progress reviews and plan adjustments"
+        ]
+      },
+      "brand_development": {
+        "description": "Building authentic, memorable artist brands that resonate with target audiences",
+        "includes": [
+          "Artist identity and persona development",
+          "Visual branding (logos, color schemes, typography)",
+          "Brand voice and messaging strategy",
+          "Press kit and EPK (Electronic Press Kit) creation",
+          "Professional photography and videography",
+          "Social media aesthetic development",
+          "Website design and development",
+          "Merchandise design and branding"
+        ],
+        "deliverables": [
+          "Complete brand guidelines document",
+          "Professional press photos (10+ edited images)",
+          "Artist biography (short, medium, and long versions)",
+          "Logo suite and brand assets",
+          "Social media templates and content calendar",
+          "Professional EPK with streaming links"
+        ]
+      },
+      "performance_training": {
+        "description": "Comprehensive stage presence and performance coaching",
+        "includes": [
+          "Stage presence and audience engagement",
+          "Vocal coaching and technique refinement",
+          "Instrument proficiency development",
+          "Choreography and movement coaching",
+          "Live sound and monitor management",
+          "Setlist curation and show flow",
+          "Crowd interaction techniques",
+          "Energy management for long performances"
+        ],
+        "training_format": [
+          "One-on-one coaching sessions (weekly)",
+          "Group workshops and masterclasses",
+          "Mock performances with feedback",
+          "Video analysis and improvement tracking",
+          "Live performance opportunities at showcase events"
+        ]
+      },
+      "music_business_education": {
+        "description": "Essential music industry knowledge for informed decision-making",
+        "topics": [
+          "Copyright and intellectual property rights",
+          "Publishing and royalty collection",
+          "Contract negotiation and legal basics",
+          "Revenue streams and monetization",
+          "Music distribution and licensing",
+          "Streaming economics and playlist strategies",
+          "Tour budgeting and financial management",
+          "Tax considerations for musicians",
+          "Building and managing a team",
+          "Industry networking and relationship building"
+        ],
+        "resources": [
+          "Monthly educational webinars",
+          "Industry expert guest speakers",
+          "Comprehensive resource library",
+          "Legal consultation access",
+          "Financial planning tools and templates"
+        ]
+      },
+      "mental_health_support": {
+        "description": "Holistic wellness support for sustainable careers",
+        "includes": [
+          "Access to mental health professionals",
+          "Stress management techniques",
+          "Work-life balance coaching",
+          "Burnout prevention strategies",
+          "Substance abuse resources",
+          "Peer support groups",
+          "Mindfulness and meditation training"
+        ]
+      }
+    },
+    "program_tiers": {
+      "emerging": {
+        "description": "For artists just starting their professional journey",
+        "duration": "6 months",
+        "focus": "Foundation building and initial releases",
+        "includes": [
+          "Monthly strategy sessions",
+          "Basic brand development",
+          "First single production and release",
+          "Social media setup and initial growth",
+          "Performance coaching (bi-weekly)"
+        ]
+      },
+      "developing": {
+        "description": "For artists ready to scale their careers",
+        "duration": "12 months",
+        "focus": "Audience growth and professional development",
+        "includes": [
+          "Bi-weekly strategy sessions",
+          "Full brand development package",
+          "EP or album production",
+          "Advanced marketing campaigns",
+          "Tour support and booking assistance",
+          "Weekly performance coaching",
+          "Industry networking opportunities"
+        ]
+      },
+      "established": {
+        "description": "For artists ready for major label treatment",
+        "duration": "24 months",
+        "focus": "Global expansion and career sustainability",
+        "includes": [
+          "Weekly strategy sessions",
+          "Premium brand management",
+          "Full album production with top producers",
+          "International marketing campaigns",
+          "Major tour support and management",
+          "Daily performance and career coaching",
+          "Executive team building",
+          "Revenue optimization strategies"
+        ]
+      }
+    },
+    "success_metrics": [
+      "Streaming growth (monthly listeners, saves, playlist adds)",
+      "Social media engagement and follower growth",
+      "Live performance attendance and ticket sales",
+      "Press coverage and media mentions",
+      "Revenue generation and diversification",
+      "Industry relationships and collaborations",
+      "Fan base loyalty and retention"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "branding": {
+    "company_name": "Your Company Name",
+    "tagline": "Your Company Tagline",
+    "logo_url": "/assets/your-logo.svg",
+    "website_url": "https://yourwebsite.com",
+    "colors": {
+      "primary": "#CD8B5C",
+      "primary_dark": "#B87A4D",
+      "primary_darker": "#A66B3E",
+      "primary_light": "#E0A577",
+      "background_dark": "#1A1A1A",
+      "background_darker": "#0F0F0F",
+      "background_card": "#2A2A2A",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#F5F5F5",
+      "text_muted": "#A0A0A0"
+    },
+    "fonts": {
+      "primary": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      "heading": "inherit"
+    }
+  },
+  "contact": {
+    "email": "contact@yourcompany.com",
+    "phone": "+1 (555) 123-4567",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Your City",
+      "state": "Your State",
+      "zip": "12345",
+      "country": "United States"
+    },
+    "social_media": {
+      "instagram": "@yourcompany",
+      "twitter": "@yourcompany",
+      "facebook": "YourCompany",
+      "youtube": "YourCompany",
+      "tiktok": "@yourcompany",
+      "linkedin": "company/yourcompany"
+    }
+  },
+  "business_info": {
+    "industry": "Your Industry",
+    "founded": "2024",
+    "description": "Brief description of your company",
+    "services": [
+      "Service 1",
+      "Service 2",
+      "Service 3"
+    ],
+    "office_hours": {
+      "monday_friday": "9:00 AM - 5:00 PM",
+      "saturday": "Closed",
+      "sunday": "Closed",
+      "timezone": "EST"
+    }
+  },
+  "chatbot_settings": {
+    "welcome_message": "Welcome! How can I help you today?",
+    "default_response": "I'm not sure I understand. Could you rephrase that?",
+    "error_message": "I'm having trouble right now. Please try again later.",
+    "offline_message": "We're currently offline. Please leave a message and we'll get back to you.",
+    "typing_indicator": true,
+    "show_timestamps": true,
+    "max_message_length": 500,
+    "rate_limit": {
+      "enabled": true,
+      "max_requests": 10,
+      "time_window": 60
+    }
+  },
+  "features": {
+    "enable_file_upload": false,
+    "enable_voice_messages": false,
+    "enable_video_chat": false,
+    "enable_screen_sharing": false,
+    "enable_typing_indicator": true,
+    "enable_read_receipts": true,
+    "enable_emoji": true,
+    "enable_gifs": false
+  },
+  "analytics": {
+    "google_analytics_id": "",
+    "facebook_pixel_id": "",
+    "track_conversations": true,
+    "track_user_satisfaction": true
+  },
+  "integrations": {
+    "crm": {
+      "enabled": false,
+      "provider": "",
+      "api_key": ""
+    },
+    "email": {
+      "enabled": false,
+      "provider": "",
+      "api_key": ""
+    },
+    "sms": {
+      "enabled": false,
+      "provider": "",
+      "api_key": ""
+    }
+  },
+  "legal": {
+    "privacy_policy_url": "https://yourwebsite.com/privacy",
+    "terms_of_service_url": "https://yourwebsite.com/terms",
+    "gdpr_compliant": true,
+    "ccpa_compliant": true,
+    "data_retention_days": 90
+  }
+}

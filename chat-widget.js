@@ -22,8 +22,15 @@ class HLPFLChatWidget {
         </div>
         <div id="chat-window">
           <div id="chat-header">
-            <h3>HLPFL Records</h3>
-            <span class="company-subtitle">Grand Rapids, MI</span>
+            <div id="chat-header-content">
+              <div id="chat-header-logo">
+                <img src="/assets/hlpfl-logo.svg" alt="HLPFL Records Logo" />
+              </div>
+              <div>
+                <div id="chat-header-title">HLPFL Records</div>
+                <div id="chat-header-subtitle">Grand Rapids, MI</div>
+              </div>
+            </div>
             <button id="chat-close">×</button>
           </div>
           <div id="chat-messages"></div>

@@ -1,0 +1,41 @@
+{
+  "company": {
+    "name": "HLPFL Records",
+    "tagline": "World-Class Record Label & Artist Development",
+    "mission": "Elevating artists to global recognition through comprehensive development, innovative marketing, and industry-leading production services",
+    "founded": "2009",
+    "years_in_business": "15+",
+    "location": {
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "country": "United States"
+    },
+    "contact": {
+      "email": "contact@hlpflrecords.com",
+      "phone": "+1 (555) 123-4567",
+      "website": "https://hlpfl.org",
+      "social_media": {
+        "instagram": "@hlpflrecords",
+        "twitter": "@hlpflrecords",
+        "facebook": "HLPFLRecords",
+        "youtube": "HLPFLRecords",
+        "tiktok": "@hlpflrecords"
+      }
+    },
+    "statistics": {
+      "artists_signed": "50+",
+      "releases": "200+",
+      "total_streams": "1,000,000,000+",
+      "industry_awards": "30+",
+      "countries_reached": "150+",
+      "playlist_placements": "500+",
+      "radio_stations": "1000+"
+    },
+    "office_hours": {
+      "monday_friday": "9:00 AM - 6:00 PM EST",
+      "saturday": "10:00 AM - 4:00 PM EST",
+      "sunday": "Closed",
+      "emergency_contact": "Available 24/7 for signed artists"
+    }
+  }
+}

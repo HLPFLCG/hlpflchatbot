@@ -1,0 +1,240 @@
+{
+  "music_production": {
+    "overview": "State-of-the-art music production services with world-class producers, engineers, and facilities",
+    "recording_studios": {
+      "studio_a": {
+        "name": "Studio A - Flagship Recording Suite",
+        "description": "Premium recording environment for full band sessions and orchestral recordings",
+        "specifications": {
+          "room_size": "1,200 sq ft main room + 400 sq ft isolation booths",
+          "ceiling_height": "14 feet",
+          "acoustics": "Custom-designed acoustic treatment with variable absorption",
+          "control_room": "Dolby Atmos certified mixing environment"
+        },
+        "equipment": {
+          "console": "SSL 9000K 72-channel analog console",
+          "daw": "Pro Tools HDX, Logic Pro X, Ableton Live Suite",
+          "monitors": "ATC SCM45A Pro, Yamaha NS-10M, Auratone 5C",
+          "microphones": [
+            "Neumann U87, U47, M149",
+            "AKG C414, C12",
+            "Shure SM7B, SM57, SM58",
+            "Royer R-121, R-122",
+            "Sennheiser MD421, MD441",
+            "Telefunken ELA M 251E",
+            "Sony C-800G"
+          ],
+          "preamps": [
+            "Neve 1073, 1081",
+            "API 512C, 3124+",
+            "Universal Audio 610",
+            "Avalon VT-737SP"
+          ],
+          "outboard_gear": [
+            "Universal Audio 1176, LA-2A",
+            "Empirical Labs Distressor",
+            "Tube-Tech CL 1B",
+            "Manley Variable Mu",
+            "Lexicon 480L, PCM96",
+            "Eventide H3000, H8000"
+          ]
+        },
+        "rates": {
+          "hourly": "$150/hour",
+          "half_day": "$600 (4 hours)",
+          "full_day": "$1,000 (8 hours)",
+          "weekly": "$4,500 (40 hours)",
+          "monthly": "$15,000 (unlimited)"
+        }
+      },
+      "studio_b": {
+        "name": "Studio B - Production Suite",
+        "description": "Versatile production room perfect for songwriting, production, and mixing",
+        "specifications": {
+          "room_size": "600 sq ft",
+          "acoustics": "Optimized for mixing and production work"
+        },
+        "equipment": {
+          "console": "Avid S6 M40 control surface",
+          "daw": "Pro Tools Ultimate, Logic Pro X, Ableton Live",
+          "monitors": "Focal Twin6 Be, Yamaha HS8",
+          "midi_controllers": "Native Instruments Komplete Kontrol S88, Akai MPC X"
+        },
+        "rates": {
+          "hourly": "$100/hour",
+          "half_day": "$400 (4 hours)",
+          "full_day": "$700 (8 hours)",
+          "weekly": "$3,000 (40 hours)"
+        }
+      },
+      "studio_c": {
+        "name": "Studio C - Writing Room",
+        "description": "Intimate songwriting and pre-production space",
+        "specifications": {
+          "room_size": "300 sq ft",
+          "acoustics": "Comfortable writing environment with basic treatment"
+        },
+        "equipment": {
+          "daw": "Logic Pro X, Ableton Live",
+          "monitors": "KRK Rokit 8, Audio-Technica ATH-M50x",
+          "instruments": "Yamaha C3 Grand Piano, Fender guitars, vintage synths"
+        },
+        "rates": {
+          "hourly": "$50/hour",
+          "half_day": "$200 (4 hours)",
+          "full_day": "$350 (8 hours)"
+        }
+      }
+    },
+    "production_services": {
+      "recording": {
+        "description": "Professional recording services with experienced engineers",
+        "includes": [
+          "Pre-production consultation and arrangement review",
+          "Multi-track recording with premium equipment",
+          "Live room recording for full bands",
+          "Overdubbing and vocal comping",
+          "Session musician coordination",
+          "Real-time monitoring and headphone mixes",
+          "Digital file delivery in multiple formats"
+        ],
+        "best_practices": [
+          "Arrive prepared with rehearsed material",
+          "Bring backup instruments and strings",
+          "Communicate clearly with engineer about desired sound",
+          "Take breaks to maintain performance quality",
+          "Review takes immediately for quality assurance"
+        ]
+      },
+      "mixing": {
+        "description": "Expert mixing services to bring your recordings to life",
+        "includes": [
+          "Detailed mix consultation and reference discussion",
+          "Analog and digital mixing options",
+          "Stem mixing for flexibility",
+          "Automation and dynamic processing",
+          "Creative effects and sound design",
+          "Multiple mix revisions (up to 3 included)",
+          "Delivery in multiple formats (stereo, stems, Dolby Atmos)"
+        ],
+        "mixing_process": [
+          "Import and organize session files",
+          "Gain staging and initial balance",
+          "EQ and frequency management",
+          "Compression and dynamics control",
+          "Spatial processing (reverb, delay)",
+          "Creative effects and automation",
+          "Final polish and quality check",
+          "Client review and revision"
+        ],
+        "rates": {
+          "per_song": "$500-$1,500 depending on complexity",
+          "ep_package": "$2,000 (4-6 songs)",
+          "album_package": "$5,000 (10-12 songs)",
+          "revisions": "3 included, $100 per additional revision"
+        }
+      },
+      "mastering": {
+        "description": "Professional mastering for streaming, CD, and vinyl",
+        "includes": [
+          "Critical listening and analysis",
+          "EQ and tonal balance",
+          "Compression and limiting",
+          "Stereo width enhancement",
+          "Loudness optimization for different platforms",
+          "Sequencing and spacing for albums",
+          "DDP creation for CD manufacturing",
+          "Vinyl mastering with RIAA curve adjustment",
+          "Multiple format delivery (WAV, MP3, AAC, FLAC)"
+        ],
+        "mastering_standards": [
+          "Streaming: -14 LUFS (Spotify, Apple Music)",
+          "CD: -9 to -11 LUFS",
+          "Vinyl: -16 to -18 LUFS with bass management",
+          "YouTube: -13 to -15 LUFS",
+          "Radio: -8 to -10 LUFS"
+        ],
+        "rates": {
+          "per_song": "$100-$200",
+          "ep_package": "$400 (4-6 songs)",
+          "album_package": "$800 (10-12 songs)",
+          "stem_mastering": "+$50 per song"
+        }
+      },
+      "production": {
+        "description": "Full music production from concept to completion",
+        "includes": [
+          "Songwriting and arrangement collaboration",
+          "Beat production and sound design",
+          "Session musician hiring and direction",
+          "Vocal production and tuning",
+          "Creative direction and A&R feedback",
+          "Reference track analysis",
+          "Production revisions and refinements"
+        ],
+        "production_styles": [
+          "Pop",
+          "Hip-Hop/Rap",
+          "R&B/Soul",
+          "Rock/Alternative",
+          "Electronic/EDM",
+          "Country",
+          "Jazz",
+          "Classical/Orchestral"
+        ],
+        "rates": {
+          "per_song": "$1,000-$5,000 depending on complexity",
+          "ep_package": "$5,000-$15,000",
+          "album_package": "$15,000-$50,000",
+          "beat_production": "$500-$2,000 per beat"
+        }
+      }
+    },
+    "production_techniques": {
+      "recording_best_practices": [
+        "Proper gain staging to avoid clipping",
+        "Room treatment and acoustic optimization",
+        "Microphone placement techniques for different instruments",
+        "Phase alignment for multi-mic setups",
+        "Monitoring levels and ear fatigue prevention",
+        "Session organization and file management",
+        "Backup strategies and data redundancy"
+      ],
+      "mixing_techniques": [
+        "Subtractive EQ before additive EQ",
+        "Parallel compression for punch and clarity",
+        "Sidechain compression for space and groove",
+        "Automation for dynamic interest",
+        "Reference mixing with commercial tracks",
+        "Mono compatibility checking",
+        "Headroom management for mastering"
+      ],
+      "vocal_production": [
+        "Proper mic technique and positioning",
+        "Vocal comping for best performance",
+        "Pitch correction (natural vs. effect)",
+        "De-essing and breath control",
+        "Vocal layering and harmonies",
+        "Creative vocal effects (doubling, delay, reverb)",
+        "Vocal presence and clarity in the mix"
+      ]
+    },
+    "equipment_rental": {
+      "description": "Premium equipment rental for external sessions",
+      "available_gear": [
+        "Microphones (Neumann, AKG, Shure, Royer)",
+        "Preamps (Neve, API, Universal Audio)",
+        "Compressors (1176, LA-2A, Distressor)",
+        "Interfaces (Universal Audio Apollo, Antelope Audio)",
+        "Monitors (Focal, ATC, Yamaha)",
+        "MIDI controllers and synthesizers"
+      ],
+      "rental_rates": {
+        "daily": "10% of equipment value",
+        "weekly": "25% of equipment value",
+        "monthly": "50% of equipment value",
+        "deposit": "Full equipment value required"
+      }
+    }
+  }
+}

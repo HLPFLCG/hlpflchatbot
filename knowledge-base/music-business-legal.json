@@ -1,0 +1,412 @@
+{
+  "music_business_legal": {
+    "overview": "Essential legal and business knowledge for protecting your music and maximizing revenue",
+    "copyright_basics": {
+      "what_is_copyright": "Legal protection for original creative works, including musical compositions and sound recordings",
+      "two_types_of_copyright": {
+        "composition_copyright": {
+          "description": "Protects the underlying musical work (melody, lyrics, arrangement)",
+          "owner": "Songwriter(s) and/or music publisher",
+          "symbol": "©",
+          "registration": "U.S. Copyright Office (Form PA)",
+          "rights_included": [
+            "Reproduction right",
+            "Distribution right",
+            "Public performance right",
+            "Derivative works right",
+            "Display right"
+          ]
+        },
+        "sound_recording_copyright": {
+          "description": "Protects the specific recorded performance",
+          "owner": "Recording artist and/or record label",
+          "symbol": "℗",
+          "registration": "U.S. Copyright Office (Form SR)",
+          "rights_included": [
+            "Reproduction right",
+            "Distribution right",
+            "Public performance right (digital only)",
+            "Derivative works right"
+          ]
+        }
+      },
+      "copyright_registration": {
+        "why_register": [
+          "Legal proof of ownership",
+          "Ability to sue for infringement",
+          "Eligibility for statutory damages",
+          "Public record of your claim",
+          "Stronger legal protection"
+        ],
+        "how_to_register": [
+          "Visit copyright.gov",
+          "Create account and complete online form",
+          "Pay registration fee ($45-65)",
+          "Upload copy of work",
+          "Wait 3-8 months for processing"
+        ],
+        "cost": "$45 for single work, $65 for multiple works",
+        "timeline": "3-8 months for processing"
+      },
+      "copyright_duration": {
+        "works_created_after_1978": "Life of author + 70 years",
+        "works_for_hire": "95 years from publication or 120 years from creation, whichever is shorter",
+        "anonymous_works": "95 years from publication or 120 years from creation"
+      }
+    },
+    "music_publishing": {
+      "what_is_publishing": "The business of managing and exploiting musical compositions for profit",
+      "publishing_rights": {
+        "mechanical_rights": {
+          "description": "Rights to reproduce and distribute compositions",
+          "revenue_sources": [
+            "Physical sales (CDs, vinyl)",
+            "Digital downloads",
+            "Streaming (interactive)",
+            "Ringtones"
+          ],
+          "rates": {
+            "physical_digital": "$0.091 per song or $0.0175 per minute",
+            "streaming": "Varies by platform and agreement"
+          }
+        },
+        "performance_rights": {
+          "description": "Rights to publicly perform compositions",
+          "revenue_sources": [
+            "Radio airplay",
+            "TV broadcasts",
+            "Live performances",
+            "Streaming (non-interactive)",
+            "Restaurants, bars, retail stores"
+          ],
+          "collection": "Through PROs (ASCAP, BMI, SESAC)"
+        },
+        "synchronization_rights": {
+          "description": "Rights to use music in visual media",
+          "revenue_sources": [
+            "Film and TV placements",
+            "Commercials",
+            "Video games",
+            "YouTube videos",
+            "Corporate videos"
+          ],
+          "negotiation": "Typically negotiated case-by-case"
+        },
+        "print_rights": {
+          "description": "Rights to print and distribute sheet music",
+          "revenue_sources": [
+            "Sheet music sales",
+            "Songbooks",
+            "Digital sheet music"
+          ]
+        }
+      },
+      "publishing_deals": {
+        "traditional_publishing": {
+          "description": "Publisher owns percentage of copyright",
+          "typical_split": "50/50 (writer's share and publisher's share)",
+          "publisher_responsibilities": [
+            "Register copyrights",
+            "Collect royalties worldwide",
+            "Pitch songs for placements",
+            "Administer licenses",
+            "Provide advances"
+          ],
+          "pros": [
+            "Advance payment",
+            "Professional administration",
+            "Sync placement opportunities",
+            "Global collection"
+          ],
+          "cons": [
+            "Give up ownership percentage",
+            "Long-term commitment",
+            "Less control over songs"
+          ]
+        },
+        "co_publishing": {
+          "description": "Split ownership between writer and publisher",
+          "typical_split": "75/25 (writer keeps 75%)",
+          "pros": [
+            "Retain more ownership",
+            "Still get publisher services",
+            "Potential for advances"
+          ],
+          "cons": [
+            "Smaller advances",
+            "Still give up some ownership"
+          ]
+        },
+        "administration_deal": {
+          "description": "Publisher administers but doesn't own copyright",
+          "typical_split": "85-90% to writer, 10-15% admin fee",
+          "pros": [
+            "Retain full ownership",
+            "Professional administration",
+            "Shorter commitment"
+          ],
+          "cons": [
+            "No advances typically",
+            "Less sync opportunities"
+          ]
+        },
+        "self_publishing": {
+          "description": "Writer owns and administers their own publishing",
+          "typical_split": "100% to writer",
+          "pros": [
+            "Full ownership and control",
+            "Keep all royalties",
+            "Complete creative freedom"
+          ],
+          "cons": [
+            "Must handle all administration",
+            "No advances",
+            "Limited sync opportunities",
+            "More work required"
+          ]
+        }
+      },
+      "pros": {
+        "what_are_pros": "Performance Rights Organizations that collect performance royalties",
+        "major_pros": {
+          "ascap": {
+            "name": "American Society of Composers, Authors and Publishers",
+            "type": "Membership organization",
+            "members": "800,000+",
+            "payment_schedule": "Quarterly",
+            "membership_fee": "$50 one-time for writers, $50 annually for publishers"
+          },
+          "bmi": {
+            "name": "Broadcast Music, Inc.",
+            "type": "For-profit organization",
+            "members": "1,000,000+",
+            "payment_schedule": "Quarterly",
+            "membership_fee": "Free for writers, $150 for publishers"
+          },
+          "sesac": {
+            "name": "Society of European Stage Authors and Composers",
+            "type": "For-profit, invitation-only",
+            "members": "30,000+",
+            "payment_schedule": "Quarterly",
+            "membership_fee": "No fee (invitation only)"
+          }
+        },
+        "how_pros_work": [
+          "Monitor public performances of music",
+          "Collect licensing fees from venues and broadcasters",
+          "Distribute royalties to members",
+          "Provide legal protection for performance rights"
+        ],
+        "registration_process": [
+          "Choose one PRO (cannot join multiple)",
+          "Register as songwriter/composer",
+          "Register as publisher (optional)",
+          "Register all songs with PRO",
+          "Provide setlists for live performances"
+        ]
+      }
+    },
+    "royalty_types": {
+      "mechanical_royalties": {
+        "description": "Paid for reproduction and distribution of compositions",
+        "collection": "Through mechanical rights organizations (HFA, MRI)",
+        "rate": "$0.091 per song or $0.0175 per minute for physical/download"
+      },
+      "performance_royalties": {
+        "description": "Paid for public performance of compositions",
+        "collection": "Through PROs (ASCAP, BMI, SESAC)",
+        "sources": "Radio, TV, streaming, live venues, retail stores"
+      },
+      "sync_royalties": {
+        "description": "Paid for use of music in visual media",
+        "collection": "Negotiated directly or through sync agent",
+        "sources": "Film, TV, commercials, video games, YouTube"
+      },
+      "master_royalties": {
+        "description": "Paid to owner of sound recording",
+        "collection": "Through record label or distributor",
+        "sources": "Sales, streaming, licensing"
+      },
+      "neighboring_rights": {
+        "description": "Performance royalties for sound recordings (international)",
+        "collection": "Through SoundExchange (US) or local collection societies",
+        "sources": "Digital radio, satellite radio, webcasting"
+      },
+      "print_royalties": {
+        "description": "Paid for sheet music and songbook sales",
+        "collection": "Through print publisher",
+        "rate": "10-15% of retail price"
+      }
+    },
+    "contracts": {
+      "recording_contracts": {
+        "types": {
+          "traditional_label_deal": {
+            "description": "Label funds recording and owns masters",
+            "typical_terms": [
+              "Label owns master recordings",
+              "Artist receives 15-25% royalty rate",
+              "Recoupable advances",
+              "Multi-album commitment",
+              "360 deal may include touring, merch, publishing"
+            ],
+            "pros": [
+              "Significant funding and resources",
+              "Professional team and infrastructure",
+              "Marketing and promotion budget",
+              "Distribution and retail relationships"
+            ],
+            "cons": [
+              "Give up master ownership",
+              "Lower royalty rates",
+              "Recoupment requirements",
+              "Less creative control",
+              "Long-term commitment"
+            ]
+          },
+          "distribution_deal": {
+            "description": "Artist owns masters, label handles distribution",
+            "typical_terms": [
+              "Artist retains master ownership",
+              "Label takes 15-30% of revenue",
+              "No recoupment typically",
+              "Shorter commitment (1-2 albums)"
+            ],
+            "pros": [
+              "Retain master ownership",
+              "Higher royalty rates",
+              "More creative control",
+              "Shorter commitment"
+            ],
+            "cons": [
+              "Less funding and support",
+              "Artist funds recording",
+              "Limited marketing budget"
+            ]
+          },
+          "licensing_deal": {
+            "description": "Artist licenses masters to label for specific term",
+            "typical_terms": [
+              "Artist retains ownership",
+              "Label licenses for 5-10 years",
+              "50/50 profit split typical",
+              "Masters revert to artist after term"
+            ],
+            "pros": [
+              "Retain ultimate ownership",
+              "Fair profit split",
+              "Masters revert after term",
+              "Label investment in marketing"
+            ],
+            "cons": [
+              "Temporary loss of control",
+              "May require artist funding",
+              "Limited to specific territories"
+            ]
+          }
+        },
+        "key_contract_terms": {
+          "advance": "Upfront payment against future royalties (recoupable)",
+          "royalty_rate": "Percentage of revenue paid to artist",
+          "recoupment": "Process of label recovering costs from artist royalties",
+          "term": "Length of contract (albums or years)",
+          "territory": "Geographic areas covered by deal",
+          "options": "Label's right to extend contract",
+          "reversion": "When rights return to artist",
+          "creative_control": "Who has final say on artistic decisions"
+        }
+      },
+      "management_contracts": {
+        "typical_terms": [
+          "15-20% commission on gross income",
+          "3-5 year term",
+          "Sunset clause (declining commission after term)",
+          "Exclusivity in music industry",
+          "Manager's responsibilities defined"
+        ],
+        "manager_responsibilities": [
+          "Career strategy and planning",
+          "Deal negotiation",
+          "Team building and coordination",
+          "Budget management",
+          "Schedule coordination",
+          "Industry relationships",
+          "Problem solving and advocacy"
+        ],
+        "red_flags": [
+          "Commission over 20%",
+          "No sunset clause",
+          "Vague responsibilities",
+          "Conflicts of interest",
+          "Unreasonable term length"
+        ]
+      },
+      "producer_agreements": {
+        "typical_terms": [
+          "Upfront fee or advance",
+          "3-5% royalty on sales (points)",
+          "Producer credit",
+          "Ownership of production elements",
+          "Recoupment terms"
+        ],
+        "work_for_hire_vs_collaboration": {
+          "work_for_hire": "Producer creates work as employee, no ongoing royalties",
+          "collaboration": "Producer receives ongoing royalties and credit"
+        }
+      }
+    },
+    "business_entities": {
+      "sole_proprietorship": {
+        "description": "Individual operates as themselves",
+        "pros": ["Simple setup", "Full control", "Easy taxes"],
+        "cons": ["Personal liability", "Limited credibility", "Harder to raise capital"]
+      },
+      "llc": {
+        "description": "Limited Liability Company",
+        "pros": ["Personal liability protection", "Flexible taxation", "Professional credibility"],
+        "cons": ["Setup costs", "Annual fees", "More paperwork"]
+      },
+      "corporation": {
+        "description": "Separate legal entity (S-Corp or C-Corp)",
+        "pros": ["Strong liability protection", "Easier to raise capital", "Tax benefits"],
+        "cons": ["Complex setup", "Double taxation (C-Corp)", "Extensive regulations"]
+      }
+    },
+    "tax_considerations": {
+      "musician_tax_deductions": [
+        "Instruments and equipment",
+        "Recording and production costs",
+        "Marketing and promotion",
+        "Travel and transportation",
+        "Home studio expenses",
+        "Professional services (legal, accounting)",
+        "Education and training",
+        "Website and online presence",
+        "Merchandise and inventory",
+        "Health insurance (if self-employed)"
+      ],
+      "quarterly_estimated_taxes": {
+        "who_must_pay": "Self-employed individuals expecting to owe $1,000+ in taxes",
+        "due_dates": "April 15, June 15, September 15, January 15",
+        "calculation": "Based on previous year's income or current year estimate"
+      },
+      "1099_forms": {
+        "1099_MISC": "For non-employee compensation over $600",
+        "1099_K": "For payment card and third-party network transactions"
+      }
+    },
+    "legal_resources": {
+      "organizations": [
+        "Volunteer Lawyers for the Arts",
+        "California Lawyers for the Arts",
+        "Music Industry Research Association",
+        "Future of Music Coalition"
+      ],
+      "recommended_reading": [
+        "All You Need to Know About the Music Business by Donald Passman",
+        "Music Law: How to Run Your Band's Business by Richard Stim",
+        "The Musician's Business and Legal Guide by Mark Halloran"
+      ]
+    }
+  }
+}

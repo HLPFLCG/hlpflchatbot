@@ -153,16 +153,18 @@
 }
 
 #chat-header-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--hlpfl-copper);
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  color: var(--hlpfl-text-primary);
-  font-size: 16px;
+  filter: drop-shadow(0 2px 4px var(--hlpfl-shadow-copper));
+}
+
+#chat-header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 #chat-header-title {
