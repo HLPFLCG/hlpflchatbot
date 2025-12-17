@@ -1,50 +1,136 @@
 {
-  "faqs": {
-    "artist_submissions": {
-      "how_to_submit": {
-        "question": "How do I submit my music to HLPFL Records?",
-        "answer": "You can submit your music through our online submission form at hlpfl.org/submit. Please include 2-3 of your best tracks, a brief bio, and links to your social media profiles."
-      },
-      "submission_requirements": {
-        "question": "What are your submission requirements?",
-        "answer": "We accept submissions in all genres. Please ensure your tracks are professionally recorded and mixed, include high-quality artwork, and provide information about your musical background and career goals."
-      },
-      "response_time": {
-        "question": "How long does it take to hear back about submissions?",
-        "answer": "We review all submissions carefully and typically respond within 2-4 weeks. If you haven't heard back after 4 weeks, feel free to follow up via email."
-      },
-      "unsolicited_submissions": {
-        "question": "Do you accept unsolicited submissions?",
-        "answer": "Yes! We actively review all submissions through our official submission portal. We're always looking for talented artists to join our roster."
-      }
+  "faqs": [
+    {
+      "question": "How do I submit my music to HLPFL Records?",
+      "answer": "Visit our contact page at hlpfl.org/contact, fill out the submission form, and include links to your music along with a brief bio. Our A&R team reviews all submissions within 1-2 weeks.",
+      "category": "submission",
+      "keywords": ["submit", "music", "demo", "send", "application"]
     },
-    "services": {
-      "cost": {
-        "question": "How much do your services cost?",
-        "answer": "Our pricing varies depending on the specific services and scope of work. We offer customized packages based on each artist's needs and goals. Contact us for a personalized consultation and quote."
-      },
-      "contracts": {
-        "question": "What kind of contracts do you offer?",
-        "answer": "We offer flexible contract arrangements including development deals, distribution agreements, and traditional record deals. All contracts are artist-friendly and transparent."
-      },
-      "royalties": {
-        "question": "What's your royalty split?",
-        "answer": "Royalty splits vary by deal type and artist level. We believe in fair compensation and typically offer industry-leading royalty rates. Specific terms are discussed during contract negotiations."
-      }
+    {
+      "question": "What genres does HLPFL Records work with?",
+      "answer": "We work with artists across all genres including Pop, R&B, Hip-Hop, Trap, Rock, Electronic, Jazz, and Classical. We're open to exceptional talent regardless of genre.",
+      "category": "submission",
+      "keywords": ["genre", "style", "type", "music"]
     },
-    "company": {
-      "founded": {
-        "question": "When was HLPFL Records founded?",
-        "answer": "HLPFL Records was founded in 2009 in Nashville, Tennessee. We've been serving independent artists for over 15 years."
-      },
-      "artists": {
-        "question": "How many artists are on your roster?",
-        "answer": "We currently work with 50+ artists across various genres. We focus on quality over quantity and provide personalized attention to each artist."
-      },
-      "success_stories": {
-        "question": "Can you share some success stories?",
-        "answer": "Our artists have achieved over 1 billion streams collectively, landed major playlist placements, and secured record deals with major labels. Many have built sustainable careers in the music industry."
-      }
+    {
+      "question": "Do I need to have released music before submitting?",
+      "answer": "While having released music helps, we also consider demos and unreleased material from promising artists. Quality and potential matter most.",
+      "category": "submission",
+      "keywords": ["released", "demo", "unreleased", "requirement"]
+    },
+    {
+      "question": "What should I include in my submission?",
+      "answer": "Include your best 3-5 tracks, a brief bio, links to your music on streaming platforms, and any relevant social media profiles. High-quality recordings make a strong impression.",
+      "category": "submission",
+      "keywords": ["include", "requirements", "need", "submission"]
+    },
+    {
+      "question": "How long does it take to hear back?",
+      "answer": "Our A&R team reviews all submissions within 1-2 weeks. Due to high volume, we can only respond to artists who align with our current roster needs.",
+      "category": "submission",
+      "keywords": ["timeline", "response", "wait", "hear back"]
+    },
+    {
+      "question": "Do you charge submission fees?",
+      "answer": "No, we never charge fees to review music submissions. Be wary of any label that does.",
+      "category": "submission",
+      "keywords": ["fee", "cost", "charge", "payment"]
+    },
+    {
+      "question": "What happens if you're interested in my music?",
+      "answer": "If your music aligns with our vision, an A&R representative will contact you to discuss potential partnership opportunities and next steps.",
+      "category": "submission",
+      "keywords": ["interested", "next steps", "accepted"]
+    },
+    {
+      "question": "What services does HLPFL Records provide?",
+      "answer": "We offer comprehensive services including artist development, music production, global distribution, publishing & rights management, marketing & promotion, and career management.",
+      "category": "services",
+      "keywords": ["services", "offer", "provide", "help"]
+    },
+    {
+      "question": "Can you help with music production?",
+      "answer": "Yes! We have state-of-the-art recording studios and work with world-class producers, engineers, and sound designers.",
+      "category": "services",
+      "keywords": ["production", "recording", "studio", "mixing", "mastering"]
+    },
+    {
+      "question": "How does distribution work?",
+      "answer": "We distribute music to all major streaming platforms (Spotify, Apple Music, YouTube Music, etc.) and can arrange physical distribution for albums and vinyl.",
+      "category": "services",
+      "keywords": ["distribution", "streaming", "platforms", "release"]
+    },
+    {
+      "question": "Do you help with marketing and promotion?",
+      "answer": "Absolutely. We provide social media marketing, PR campaigns, radio promotion, playlist placement, and influencer partnerships.",
+      "category": "services",
+      "keywords": ["marketing", "promotion", "advertising", "social media"]
+    },
+    {
+      "question": "What about music publishing?",
+      "answer": "We offer full publishing services including copyright registration, royalty collection, sync licensing opportunities, and publishing administration.",
+      "category": "services",
+      "keywords": ["publishing", "copyright", "royalties", "licensing"]
+    },
+    {
+      "question": "How long has HLPFL Records been in business?",
+      "answer": "HLPFL Records was founded in 2009 and has over 15 years of experience in the music industry.",
+      "category": "company",
+      "keywords": ["founded", "history", "years", "experience"]
+    },
+    {
+      "question": "Where is HLPFL Records located?",
+      "answer": "We're based in Grand Rapids, Michigan, with connections and operations across the United States and internationally.",
+      "category": "company",
+      "keywords": ["location", "address", "where", "office"]
+    },
+    {
+      "question": "How many artists do you work with?",
+      "answer": "We currently work with 50+ active artists and have released over 200 projects, generating 1B+ streams globally.",
+      "category": "company",
+      "keywords": ["artists", "roster", "how many"]
+    },
+    {
+      "question": "What makes HLPFL Records different from other labels?",
+      "answer": "Our artist-first approach, comprehensive support services, transparent partnerships, and commitment to long-term career development set us apart.",
+      "category": "company",
+      "keywords": ["different", "unique", "special", "why"]
+    },
+    {
+      "question": "Do you work with independent artists?",
+      "answer": "Yes! We work with both emerging independent artists and established talent, providing tailored support for each career stage.",
+      "category": "company",
+      "keywords": ["independent", "unsigned", "new artists"]
+    },
+    {
+      "question": "How can I listen to HLPFL artists?",
+      "answer": "Visit our Artists page at hlpfl.org/artists/ or our Releases page at hlpfl.org/releases/ to discover our roster and their music.",
+      "category": "general",
+      "keywords": ["listen", "music", "artists", "hear"]
+    },
+    {
+      "question": "Do you have an artist portal?",
+      "answer": "Yes, signed artists have access to our artist portal at hlpfl.org/portal/ for contract management, royalty tracking, and resources.",
+      "category": "general",
+      "keywords": ["portal", "login", "dashboard", "access"]
+    },
+    {
+      "question": "How do I inquire about licensing music?",
+      "answer": "For licensing inquiries, visit hlpfl.org/licensing/ or email us at contact@hlpflrecords.com with details about your project.",
+      "category": "general",
+      "keywords": ["licensing", "sync", "use music", "commercial"]
+    },
+    {
+      "question": "Where can I find news and updates?",
+      "answer": "Check our News page at hlpfl.org/news/ for the latest announcements, releases, and company updates.",
+      "category": "general",
+      "keywords": ["news", "updates", "announcements", "latest"]
+    },
+    {
+      "question": "How do I contact HLPFL Records?",
+      "answer": "Email us at contact@hlpflrecords.com, call +1 (555) 123-4567, or use the contact form at hlpfl.org/contact/. Office hours are Monday-Friday, 9 AM - 6 PM EST.",
+      "category": "general",
+      "keywords": ["contact", "email", "phone", "reach"]
     }
-  }
+  ]
 }

@@ -1,27 +1,47 @@
 {
   "company": {
     "name": "HLPFL Records",
+    "tagline": "World-Class Record Label & Artist Development",
+    "mission": "Elevating artists to global recognition",
     "founded": 2009,
-    "location": "Nashville, Tennessee",
-    "description": "Independent record label focused on artist development and quality music production",
+    "years_in_business": "15+",
+    "location": {
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "address": "123 Music Row, Nashville, TN 37203"
+    },
+    "description": "HLPFL Records is a premier record label dedicated to discovering, developing, and promoting exceptional musical talent. With over 15 years of experience in the music industry, we've built a reputation for nurturing artists and creating groundbreaking music that resonates globally.",
     "statistics": {
       "artists": "50+",
       "releases": "200+",
       "streams": "1B+",
-      "years_in_business": 15
+      "years": "15+",
+      "awards": "30+",
+      "team_members": "50+"
     },
+    "core_values": [
+      "Artist-First approach - We prioritize our artists' creative vision and career development above all else",
+      "Excellence - We pursue the highest standards in music production, marketing, and artist support",
+      "Collaboration - We believe in the power of collaboration between artists, producers, and our team",
+      "Innovation - We embrace new technologies and creative approaches to push musical boundaries",
+      "Global Reach - We connect local talent with global audiences through strategic partnerships",
+      "Long-Term Success - We focus on building sustainable careers, not just short-term hits"
+    ],
     "differentiators": [
       "Artist-first approach to development",
-      "Comprehensive career guidance",
-      "Quality over quantity releases",
-      "Industry connections and networking",
-      "Transparent business practices"
+      "Comprehensive career guidance and support",
+      "Transparent business practices and partnerships",
+      "Quality over quantity in releases",
+      "Industry connections and networking opportunities",
+      "Personalized attention for each artist"
     ],
     "contact": {
-      "email": "info@hlpfl.org",
-      "phone": "615-555-0123",
+      "email": "contact@hlpflrecords.com",
+      "phone": "+1 (555) 123-4567",
       "address": "123 Music Row, Nashville, TN 37203",
-      "office_hours": "Monday-Friday 9AM-5PM CST"
+      "office_hours": "Monday-Friday 9:00 AM - 6:00 PM EST",
+      "website": "https://hlpfl.org",
+      "api": "https://hlpfl.io"
     }
   }
 }
