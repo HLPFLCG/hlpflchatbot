@@ -1,39 +1,48 @@
 {
-  "templates": {
-    "greeting": {
-      "friendly": "Hey there! 👋 Welcome to HLPFL Records. I'm here to help you learn about our record label and answer any questions about artist development, submissions, or our services. What can I help you with today?",
-      "professional": "Welcome to HLPFL Records. I'm your virtual assistant and I'm here to provide information about our record label services, artist submissions, and career development opportunities. How may I assist you?"
-    },
-    "artist_submission": {
-      "process": "Great to hear you're interested in submitting your music! 🎵 Here's how it works: Submit 2-3 of your best tracks through our online form at hlpfl.org/submit, along with your bio and social links. We review all submissions personally and typically respond within 2-4 weeks.",
-      "requirements": "For submissions, we look for professionally recorded tracks, high-quality artwork, and artists who are serious about their music career. Include your best work that represents your unique sound and style.",
-      "genre": "We work with artists across all genres! From indie rock to hip-hop, country to electronic - we're more interested in quality and potential than specific genres. What style of music do you create?"
-    },
-    "services": {
-      "development": "Our artist development program is comprehensive! We offer vocal coaching, songwriting workshops, performance training, and brand development. Programs typically run 6-12 months and are customized to each artist's needs. 🎤",
-      "production": "We provide full production services from pre-production to final master. This includes professional recording, mixing, mastering, and access to our state-of-the-art facilities and session musicians. 🎙️",
-      "distribution": "We distribute to 150+ platforms including Spotify, Apple Music, and Amazon Music. This includes Content ID protection, analytics, and playlist pitching strategies to maximize your reach. 📊",
-      "marketing": "Our marketing services include social media campaigns, PR, music video promotion, radio promotion, and tour support. We create customized strategies for each release to ensure maximum impact. 📱"
-    },
-    "company_info": {
-      "about": "HLPFL Records was founded in 2009 in Nashville, Tennessee. We're an independent label focused on artist development and quality music production. We've worked with 50+ artists, released 200+ projects, and achieved over 1 billion streams! 🎸",
-      "differentiators": "What makes us different? We take an artist-first approach with transparent business practices, comprehensive career guidance, and industry connections. We believe in building sustainable careers, not just releasing singles. 🌟",
-      "location": "We're based in Nashville, Tennessee - the heart of the music industry! Our office is at 123 Music Row, and we're open Monday-Friday 9AM-5PM CST. Stop by sometime or schedule a virtual meeting! 🏢"
-    },
-    "contact": {
-      "general": "You can reach us at info@hlpfl.org or call 615-555-0123. Our office hours are Monday-Friday 9AM-5PM CST. We typically respond to emails within 24 hours. 📧",
-      "submissions": "For music submissions, please use our online form at hlpfl.org/submit. This ensures your submission gets to the right team member and we can track it properly. 📝",
-      "business": "For business inquiries, partnerships, or press, please email business@hlpfl.org and we'll connect you with the right team member. 💼"
-    },
-    "career_advice": {
-      "beginner": "Starting out in music? Focus on three things: 1) Write and record consistently, 2) Build your online presence and fanbase, 3) Network with other artists and industry professionals. Quality and persistence are key! 🎵",
-      "networking": "Nashville's amazing for networking! Attend open mics, songwriting circles, and industry events. Don't be afraid to reach out to other artists - collaboration is how you grow. Social media is also great for connecting! 🤝",
-      "business": "Treat your music like a business from day one. Understand royalties, publishing rights, and contracts. Build an email list, engage with fans regularly, and diversify your income streams through touring, merch, and licensing. 💡"
-    },
-    "fallback": {
-      "unknown": "I'm not quite sure how to help with that, but I'm here to answer questions about HLPFL Records, artist submissions, our services, or music industry advice. What would you like to know?",
-      "confused": "I want to make sure I give you the best information! Are you asking about: 1) Submitting music, 2) Our services, 3) Company information, 4) Contact details, or 5) Music career advice?",
-      "escalation": "For specific questions about your situation or detailed contract information, I'd recommend connecting with our team directly at info@hlpfl.org. They can provide personalized guidance for your unique needs!"
-    }
-  }
+  "response_templates": {
+    "greeting": [
+      "Hello! Welcome to HLPFL Records. I'm here to help you with any questions about our artists, services, or how to submit your music. What can I assist you with today?",
+      "Hi there! Thanks for visiting HLPFL Records. How can I help you with your music career today?",
+      "Welcome to HLPFL Records - elevating artists to global recognition. What would you like to know?"
+    ],
+    "artist_submission": [
+      "Great question! We're always excited to discover new talent. Here's how you can submit your music to HLPFL Records:\n\n1. Visit our submission page: hlpfl.org/contact\n2. Fill out the form with your information\n3. Include links to your music (SoundCloud, Spotify, YouTube, etc.)\n4. Add a brief bio about yourself and your musical journey\n\nOur A&R team reviews all submissions within 1-2 weeks. We look for artists who demonstrate exceptional talent, unique vision, and dedication to their craft.\n\nWould you like to know more about what we look for in artists?",
+      "We'd love to hear your music! Please submit your tracks through our website at hlpfl.org/contact. Include your best 3-5 tracks and a brief bio. Our A&R team reviews every submission personally within 1-2 weeks.",
+      "Thanks for your interest in HLPFL Records! Head over to hlpfl.org/contact to share your music with our team. Make sure to include high-quality recordings and tell us your story!"
+    ],
+    "services": [
+      "HLPFL Records provides comprehensive music business solutions to help artists build successful, sustainable careers. Our services include:\n\n🎵 **Artist Development** - Career planning, brand development, performance training\n🎙️ **Music Production** - Recording, mixing, mastering with world-class producers\n🌍 **Global Distribution** - Digital and physical distribution to all major platforms\n📄 **Publishing & Rights** - Copyright protection, royalty management, sync licensing\n📢 **Marketing & Promotion** - Social media, PR campaigns, radio promotion\n💼 **Career Management** - Contract negotiation, tour management, strategic guidance\n\nWhich area would you like to learn more about?",
+      "We provide end-to-end support for artists: from vocal coaching and production to worldwide distribution and marketing campaigns. Our comprehensive services cover every aspect of an artist's career.",
+      "Our services cover artist development, music production, global distribution, publishing & rights management, marketing & promotion, and career management. We're here to support you at every stage of your music journey."
+    ],
+    "company_info": [
+      "HLPFL Records is a premier record label dedicated to discovering, developing, and promoting exceptional musical talent. Founded in 2009, we've grown from a small independent label to a respected name in the industry.\n\n**Our Mission:** Elevating artists to global recognition through artist-first partnerships and comprehensive support.\n\n**Our Track Record:**\n• 50+ Active Artists\n• 200+ Music Releases\n• 1B+ Global Streams\n• 15+ Years in Business\n• 30+ Industry Awards\n\nWe believe in creating partnerships that go beyond traditional label relationships, providing personalized attention and resources to help each artist achieve their unique vision.\n\nIs there anything specific you'd like to know about our work or artists?",
+      "Since 2009, HLPFL Records has been helping independent artists achieve their dreams from our home in Grand Rapids, Michigan. We're an independent label supporting 50+ artists with 200+ releases and over 1 billion streams worldwide.",
+      "We're a Grand Rapids-based independent record label founded in 2009, dedicated to empowering independent artists with comprehensive support and global reach."
+    ],
+    "contact": [
+      "You can reach HLPFL Records at:\n\n📧 Email: contact@hlpflrecords.com\n📞 Phone: +1 (555) 123-4567\n📍 Address: 123 Music Row, Nashville, TN 37203\n🕐 Office Hours: Monday-Friday, 9 AM - 6 PM EST\n🌐 Website: https://hlpfl.org\n\nWe'd love to hear from you!",
+      "Contact us via email at contact@hlpflrecords.com or call +1 (555) 123-4567. We're available Monday-Friday, 9 AM - 6 PM EST. You can also use our contact form at hlpfl.org/contact.",
+      "Get in touch with us at contact@hlpflrecords.com or visit our office. We're here to help with any questions about our services or artist opportunities!"
+    ],
+    "fallback": [
+      "That's a great question! While I don't have specific information about that right now, I'd be happy to connect you with our team who can provide more details.\n\nYou can reach us at:\n• Email: contact@hlpflrecords.com\n• Phone: +1 (555) 123-4567\n• Contact form: hlpfl.org/contact\n\nIs there anything else I can help you with?",
+      "I can assist with questions about our record label services, artist opportunities, or company information. Could you rephrase your question or let me know what specific area you'd like to learn about?",
+      "I'd be happy to help you learn about HLPFL Records! You can ask about our services, submitting music, company information, or contact details. What would you like to know?"
+    ],
+    "closing": [
+      "Thank you for chatting with HLPFL Records! If you have any other questions, feel free to ask. You can also visit our website at hlpfl.org or contact us directly at contact@hlpflrecords.com.\n\nHave a great day! 🎵",
+      "Thanks for your interest in HLPFL Records! We're here to help whenever you need us. Visit hlpfl.org for more information or reach out at contact@hlpflrecords.com.",
+      "It was great talking with you! For more information about HLPFL Records and our artists, visit hlpfl.org. Feel free to reach out anytime at contact@hlpflrecords.com. Keep making great music! 🎶"
+    ]
+  },
+  "quick_replies": [
+    "How do I submit my music?",
+    "What services do you offer?",
+    "Tell me about HLPFL Records",
+    "What genres do you work with?",
+    "How can I contact you?",
+    "What makes you different?",
+    "Do you charge submission fees?"
+  ]
 }

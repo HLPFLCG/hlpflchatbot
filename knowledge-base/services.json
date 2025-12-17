@@ -2,55 +2,108 @@
   "services": {
     "artist_development": {
       "name": "Artist Development",
-      "description": "Comprehensive artist development program including vocal coaching, songwriting, and performance training",
-      "details": [
-        "Vocal coaching and technique improvement",
-        "Songwriting workshops and collaboration",
-        "Stage presence and performance training",
-        "Brand development and image consulting",
-        "Social media strategy and management"
+      "description": "Comprehensive artist development programs to nurture talent and build successful, sustainable music careers.",
+      "features": [
+        "Career Planning - Strategic roadmap for long-term success",
+        "Brand Development - Building authentic artist identity",
+        "Performance Training - Coaching for live performances",
+        "Marketing Strategy - Comprehensive promotional planning"
       ],
-      "duration": "6-12 month programs available",
-      "investment": "Custom pricing based on artist needs"
+      "benefits": [
+        "Personalized career guidance",
+        "Professional skill development",
+        "Industry networking opportunities",
+        "Long-term partnership approach"
+      ]
     },
-    "production": {
+    "music_production": {
       "name": "Music Production",
-      "description": "Professional music production services from pre-production to final master",
-      "details": [
-        "Pre-production and song arrangement",
-        "Professional recording sessions",
-        "Mixing and mastering services",
-        "Session musicians and arrangements",
-        "State-of-the-art recording facilities"
+      "description": "State-of-the-art production facilities with world-class producers, engineers, and cutting-edge technology.",
+      "features": [
+        "Recording Studios - Professional recording environments",
+        "Mixing & Mastering - Industry-standard audio engineering",
+        "Production Services - Collaboration with top producers",
+        "Sound Design - Creative audio manipulation and effects"
       ],
-      "turnaround": "2-8 weeks depending on project scope",
-      "investment": "Project-based pricing"
+      "benefits": [
+        "Access to cutting-edge equipment",
+        "Work with experienced professionals",
+        "High-quality final products",
+        "Creative freedom and support"
+      ]
     },
-    "distribution": {
-      "name": "Distribution Services",
-      "description": "Global music distribution across all major streaming platforms and digital stores",
-      "details": [
-        "Spotify, Apple Music, Amazon Music distribution",
-        "YouTube Content ID protection",
-        "Streaming analytics and reporting",
-        "Royalty collection and payment",
-        "Playlist pitching strategies"
+    "global_distribution": {
+      "name": "Global Distribution",
+      "description": "Worldwide distribution network to get your music to every major platform and reach millions of listeners.",
+      "features": [
+        "Digital Distribution - All major streaming platforms",
+        "Physical Releases - CD and vinyl distribution",
+        "Playlist Placement - Strategic playlist pitching",
+        "International Marketing - Multi-territory campaigns"
       ],
-      "coverage": "150+ digital platforms globally",
-      "terms": "Standard industry distribution terms"
+      "platforms": [
+        "Spotify",
+        "Apple Music",
+        "YouTube Music",
+        "Amazon Music",
+        "Tidal",
+        "Deezer",
+        "Pandora",
+        "SoundCloud",
+        "150+ platforms worldwide"
+      ]
     },
-    "marketing": {
+    "publishing_rights": {
+      "name": "Publishing & Rights Management",
+      "description": "Complete music publishing services including copyright protection, royalty collection, and licensing.",
+      "features": [
+        "Copyright Registration - Protecting your intellectual property",
+        "Royalty Management - Tracking and collecting all revenue streams",
+        "Sync Licensing - Opportunities in TV, film, commercials, and games",
+        "Publishing Administration - Professional rights management"
+      ],
+      "benefits": [
+        "Maximize revenue from all sources",
+        "Professional copyright protection",
+        "Access to sync opportunities",
+        "Transparent royalty reporting"
+      ]
+    },
+    "marketing_promotion": {
       "name": "Marketing & Promotion",
-      "description": "Strategic marketing campaigns to maximize music reach and audience engagement",
-      "details": [
-        "Social media marketing campaigns",
-        "Public relations and press coverage",
-        "Music video production and promotion",
-        "Radio promotion and playlist pitching",
-        "Tour and live event support"
+      "description": "Strategic marketing campaigns and promotional services to maximize your music's reach and impact.",
+      "features": [
+        "Social Media Marketing - Comprehensive social strategy",
+        "PR Campaigns - Press coverage and media relations",
+        "Radio Promotion - Traditional and digital radio",
+        "Influencer Partnerships - Collaborations with key influencers",
+        "Content Creation - Music videos and promotional materials",
+        "Email Marketing - Direct fan engagement"
       ],
-      "timeline": "Campaign-specific, typically 3-6 months",
-      "roi": "Trackable metrics and performance reporting"
+      "channels": [
+        "Instagram",
+        "TikTok",
+        "Twitter/X",
+        "Facebook",
+        "YouTube",
+        "LinkedIn"
+      ]
+    },
+    "career_management": {
+      "name": "Career Management",
+      "description": "Personalized career management and strategic guidance to navigate the music industry successfully.",
+      "features": [
+        "Contract Negotiation - Fair and transparent agreements",
+        "Tour Management - Booking and logistics support",
+        "Brand Partnerships - Commercial opportunities",
+        "Long-term Strategy - Sustainable career planning"
+      ],
+      "benefits": [
+        "Expert industry guidance",
+        "Professional representation",
+        "Strategic career planning",
+        "Comprehensive support system"
+      ]
     }
   }
 }
