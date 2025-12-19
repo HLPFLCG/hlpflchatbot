@@ -1,29 +1,74 @@
 {
   "name": "hlpfl-chatbot",
-  "version": "1.0.0",
-  "description": "AI Chatbot for HLPFL Records - Nashville-based record label",
-  "main": "backend/server.js",
+  "version": "2.0.0",
+  "description": "HLPFL Records AI-Powered Chatbot - Production Ready with TypeScript",
+  "main": "dist/worker.js",
+  "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "concurrently &quot;npm run server&quot; &quot;npm run client&quot;",
-    "server": "cd backend && npm run dev",
-    "client": "cd frontend && npm start",
-    "build": "cd frontend && npm run build",
-    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "deploy": "npm run build && npm run deploy-gh-pages"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.js",
+    "lint:fix": "eslint . --ext .ts,.js --fix",
+    "format": "prettier --write &quot;src/**/*.{ts,js,json}&quot;",
+    "format:check": "prettier --check &quot;src/**/*.{ts,js,json}&quot;",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "test:security": "npm audit",
+    "validate": "npm run type-check && npm run lint && npm run test",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "keywords": [
     "chatbot",
     "ai",
-    "music",
-    "record-label",
+    "cloudflare-workers",
+    "openai",
+    "typescript",
     "hlpfl",
-    "react",
-    "nodejs"
+    "music",
+    "record-label"
   ],
   "author": "HLPFL Records",
   "license": "MIT",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0"
+  },
   "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "@vitest/ui": "^1.1.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0",
+    "wrangler": "^3.22.1",
     "concurrently": "^8.2.2"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
