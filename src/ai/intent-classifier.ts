@@ -84,7 +84,7 @@ export class AIIntentClassifier {
       const messages = buildPrompt('intentClassification', { message });
 
       // Add conversation context if available
-      if (context) {
+      if (context && messages[0]) {
         messages[0].content += `\n\nConversation context: ${context}`;
       }
 
@@ -94,7 +94,8 @@ export class AIIntentClassifier {
         maxTokens: 50,
       });
 
-      const intent = response.choices[0]?.message?.content?.trim().toLowerCase() || 'general_inquiry';
+      const messageContent = response.choices[0]?.message?.content;
+      const intent = messageContent ? messageContent.trim().toLowerCase() : 'general_inquiry';
 
       // Validate intent
       const validIntent = this.validateIntent(intent);

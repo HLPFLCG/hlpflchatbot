@@ -58,7 +58,7 @@ export class AIEntityExtractor {
       const messages = buildPrompt('entityExtraction', { message });
 
       // Add context if available
-      if (context.conversationHistory) {
+      if (context.conversationHistory && messages[0]) {
         messages[0].content += `\n\nConversation context: ${this.buildContext(context.conversationHistory)}`;
       }
 

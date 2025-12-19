@@ -57,7 +57,7 @@ export class AISentimentAnalyzer {
       const messages = buildPrompt('sentimentAnalysis', { message });
 
       // Add context if available
-      if (context) {
+      if (context && messages[0]) {
         messages[0].content += `\n\nConversation context: ${context}`;
       }
 
@@ -68,7 +68,8 @@ export class AISentimentAnalyzer {
       });
 
       // Parse JSON response
-      const content = response.choices[0]?.message?.content || '{}';
+      const messageContent = response.choices[0]?.message?.content;
+      const content = messageContent || '{}';
       const rawSentiment = JSON.parse(content) as Record<string, any>;
 
       // Validate and normalize
@@ -120,10 +121,14 @@ export class AISentimentAnalyzer {
     if (!Array.isArray(emotions)) return [];
 
     return emotions
-      .map((emotion: any) => ({
-        type: this.normalizeEmotionType(emotion.type || emotion),
-        intensity: typeof emotion.intensity === 'number' ? emotion.intensity : 0.5,
-      }))
+      .map((emotion: any) => {
+        const emotionType = emotion?.type || emotion;
+        const emotionIntensity = typeof emotion?.intensity === 'number' ? emotion.intensity : 0.5;
+        return {
+          type: this.normalizeEmotionType(emotionType),
+          intensity: emotionIntensity,
+        };
+      })
       .slice(0, 3); // Keep top 3 emotions
   }
 
