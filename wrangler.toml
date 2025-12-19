@@ -1,5 +1,5 @@
 name = "hlpfl-chatbot"
-main = "worker-enhanced.js"
+main = "worker-enhanced.ts"
 compatibility_date = "2023-12-01"
 
 # Variables for different environments

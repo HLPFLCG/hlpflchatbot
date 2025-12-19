@@ -8,11 +8,12 @@
    ============================================ */
 
 export interface Env {
-  OPENAI_API_KEY: string;
-  ENVIRONMENT: 'development' | 'staging' | 'production';
+  OPENAI_API_KEY?: string;
+  ENVIRONMENT?: 'development' | 'staging' | 'production';
   ALLOWED_ORIGINS?: string;
   RATE_LIMIT_ENABLED?: string;
   CACHE_ENABLED?: string;
+  CACHE?: KVNamespace | Map<string, any>;
 }
 
 /* ============================================
