@@ -11,7 +11,7 @@ export class AIIntentClassifier {
     this.useCache = options.useCache !== false;
     this.cache = new Map();
     this.cacheTimeout = options.cacheTimeout || 300000; // 5 minutes
-    
+
     // Available intents
     this.intents = [
       'greeting',
@@ -28,7 +28,7 @@ export class AIIntentClassifier {
       'follow_up',
       'contact_request',
       'testimonial_request',
-      'career_advice'
+      'career_advice',
     ];
   }
 
@@ -53,7 +53,7 @@ export class AIIntentClassifier {
 
       // Build prompt
       const messages = buildPrompt('intentClassification', { message });
-      
+
       // Add conversation context if available
       if (context) {
         messages[0].content += `\n\nConversation context: ${context}`;
@@ -62,7 +62,7 @@ export class AIIntentClassifier {
       // Call OpenAI
       const response = await this.openai.createChatCompletion(messages, {
         temperature: 0.3,
-        maxTokens: 50
+        maxTokens: 50,
       });
 
       const intent = this.openai.extractText(response).trim().toLowerCase();
@@ -73,7 +73,7 @@ export class AIIntentClassifier {
       const result = {
         intent: validIntent,
         confidence: this.calculateConfidence(response),
-        raw: intent
+        raw: intent,
       };
 
       // Cache result
@@ -84,7 +84,7 @@ export class AIIntentClassifier {
       return result;
     } catch (error) {
       console.error('Intent classification error:', error);
-      
+
       // Fallback to rule-based classification
       return this.fallbackClassification(message);
     }
@@ -98,7 +98,7 @@ export class AIIntentClassifier {
   validateIntent(intent) {
     // Remove any extra text
     const cleaned = intent.toLowerCase().trim();
-    
+
     // Check if it's a valid intent
     if (this.intents.includes(cleaned)) {
       return cleaned;
@@ -138,9 +138,7 @@ export class AIIntentClassifier {
 
     // Get last 3 messages for context
     const recentMessages = conversationHistory.slice(-3);
-    return recentMessages
-      .map(msg => `${msg.role}: ${msg.content}`)
-      .join('\n');
+    return recentMessages.map((msg) => `${msg.role}: ${msg.content}`).join('\n');
   }
 
   /**
@@ -153,32 +151,64 @@ export class AIIntentClassifier {
 
     let intent = 'general_inquiry';
 
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    if (
+      lowerMessage.includes('hello') ||
+      lowerMessage.includes('hi') ||
+      lowerMessage.includes('hey')
+    ) {
       intent = 'greeting';
-    } else if (lowerMessage.includes('submit') || lowerMessage.includes('demo') || lowerMessage.includes('my music')) {
+    } else if (
+      lowerMessage.includes('submit') ||
+      lowerMessage.includes('demo') ||
+      lowerMessage.includes('my music')
+    ) {
       intent = 'artist_submission';
-    } else if (lowerMessage.includes('service') || lowerMessage.includes('offer') || lowerMessage.includes('what do you')) {
+    } else if (
+      lowerMessage.includes('service') ||
+      lowerMessage.includes('offer') ||
+      lowerMessage.includes('what do you')
+    ) {
       intent = 'service_inquiry';
-    } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
+    } else if (
+      lowerMessage.includes('price') ||
+      lowerMessage.includes('cost') ||
+      lowerMessage.includes('how much')
+    ) {
       intent = 'pricing_inquiry';
-    } else if (lowerMessage.includes('book') || lowerMessage.includes('schedule') || lowerMessage.includes('appointment')) {
+    } else if (
+      lowerMessage.includes('book') ||
+      lowerMessage.includes('schedule') ||
+      lowerMessage.includes('appointment')
+    ) {
       intent = 'booking_request';
-    } else if (lowerMessage.includes('about') || lowerMessage.includes('company') || lowerMessage.includes('who are')) {
+    } else if (
+      lowerMessage.includes('about') ||
+      lowerMessage.includes('company') ||
+      lowerMessage.includes('who are')
+    ) {
       intent = 'company_info';
     } else if (lowerMessage.includes('artist') || lowerMessage.includes('roster')) {
       intent = 'artist_roster';
     } else if (lowerMessage.includes('release') || lowerMessage.includes('new music')) {
       intent = 'recent_releases';
-    } else if (lowerMessage.includes('event') || lowerMessage.includes('show') || lowerMessage.includes('concert')) {
+    } else if (
+      lowerMessage.includes('event') ||
+      lowerMessage.includes('show') ||
+      lowerMessage.includes('concert')
+    ) {
       intent = 'events_inquiry';
-    } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone')) {
+    } else if (
+      lowerMessage.includes('contact') ||
+      lowerMessage.includes('email') ||
+      lowerMessage.includes('phone')
+    ) {
       intent = 'contact_request';
     }
 
     return {
       intent: intent,
       confidence: 0.7,
-      fallback: true
+      fallback: true,
     };
   }
 
@@ -188,11 +218,11 @@ export class AIIntentClassifier {
   getFromCache(message) {
     const key = this.getCacheKey(message);
     const cached = this.cache.get(key);
-    
+
     if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
       return cached.data;
     }
-    
+
     return null;
   }
 
@@ -200,7 +230,7 @@ export class AIIntentClassifier {
     const key = this.getCacheKey(message);
     this.cache.set(key, {
       data: data,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
   }
 
@@ -220,7 +250,7 @@ export class AIIntentClassifier {
     return {
       cacheSize: this.cache.size,
       availableIntents: this.intents.length,
-      intents: this.intents
+      intents: this.intents,
     };
   }
 }

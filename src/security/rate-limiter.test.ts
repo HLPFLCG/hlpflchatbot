@@ -3,7 +3,7 @@
  * Tests rate limiting functionality and abuse prevention
  */
 
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { RateLimiter, getIdentifier, DEFAULT_RATE_LIMITS } from './rate-limiter';
 
 describe('RateLimiter', () => {

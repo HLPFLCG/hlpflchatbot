@@ -67,7 +67,7 @@ Available intents:
 
 Analyze the user's message and return ONLY the intent name, nothing else.`,
 
-    user: (message) => `User message: "${message}"\n\nWhat is the primary intent?`
+    user: (message) => `User message: "${message}"\n\nWhat is the primary intent?`,
   },
 
   /**
@@ -88,7 +88,7 @@ Entity types:
 
 Return as JSON object with entity types as keys. If an entity is not found, omit it from the response.`,
 
-    user: (message) => `Message: "${message}"\n\nExtract entities:`
+    user: (message) => `Message: "${message}"\n\nExtract entities:`,
   },
 
   /**
@@ -106,7 +106,7 @@ Return a JSON object with:
 
 This helps us tailor our response appropriately.`,
 
-    user: (message) => `Message: "${message}"\n\nAnalyze sentiment:`
+    user: (message) => `Message: "${message}"\n\nAnalyze sentiment:`,
   },
 
   /**
@@ -138,7 +138,7 @@ Entities: ${JSON.stringify(entities)}
 Sentiment: ${sentiment.sentiment} (${sentiment.emotion})
 User Message: "${message}"
 
-Generate response:`
+Generate response:`,
   },
 
   /**
@@ -157,9 +157,9 @@ Create a concise summary that includes:
 Keep it brief (2-3 sentences) but informative.`,
 
     user: (conversationHistory) => `Conversation history:
-${conversationHistory.map(msg => `${msg.role}: ${msg.content}`).join('\n')}
+${conversationHistory.map((msg) => `${msg.role}: ${msg.content}`).join('\n')}
 
-Summarize:`
+Summarize:`,
   },
 
   /**
@@ -178,7 +178,7 @@ GUIDELINES:
 - Provide actionable next steps
 - Keep responses concise but complete`,
 
-    user: (question) => `Question: "${question}"\n\nAnswer:`
+    user: (question) => `Question: "${question}"\n\nAnswer:`,
   },
 
   /**
@@ -198,7 +198,7 @@ Return 2-3 specific, actionable suggestions as a JSON array.`,
     user: (context) => `Context:
 ${JSON.stringify(context, null, 2)}
 
-Suggest next steps:`
+Suggest next steps:`,
   },
 
   /**
@@ -223,8 +223,8 @@ Ensure the content is:
     user: (topic, details) => `Topic: ${topic}
 Details: ${details}
 
-Generate content:`
-  }
+Generate content:`,
+  },
 };
 
 /**
@@ -235,7 +235,7 @@ Generate content:`
  */
 export function buildPrompt(templateName, params = {}) {
   const template = PromptTemplates[templateName];
-  
+
   if (!template) {
     throw new Error(`Template '${templateName}' not found`);
   }
@@ -246,12 +246,12 @@ export function buildPrompt(templateName, params = {}) {
   if (typeof template.system === 'function') {
     messages.push({
       role: 'system',
-      content: template.system(params.context || params)
+      content: template.system(params.context || params),
     });
   } else {
     messages.push({
       role: 'system',
-      content: template.system
+      content: template.system,
     });
   }
 
@@ -259,12 +259,12 @@ export function buildPrompt(templateName, params = {}) {
   if (typeof template.user === 'function') {
     messages.push({
       role: 'user',
-      content: template.user(params.message || params.question || params)
+      content: template.user(params.message || params.question || params),
     });
   } else {
     messages.push({
       role: 'user',
-      content: template.user
+      content: template.user,
     });
   }
 

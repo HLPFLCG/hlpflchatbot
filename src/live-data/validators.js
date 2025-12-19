@@ -17,7 +17,7 @@ export class DataValidator {
       years: this.sanitizeString(stats.years) || '15+',
       awards: this.sanitizeString(stats.awards) || '30+',
       team_members: this.sanitizeString(stats.team_members) || '50+',
-      lastUpdated: this.validateDate(stats.lastUpdated) || new Date().toISOString()
+      lastUpdated: this.validateDate(stats.lastUpdated) || new Date().toISOString(),
     };
   }
 
@@ -39,7 +39,7 @@ export class DataValidator {
       spotifyUrl: this.validateUrl(artist.spotifyUrl) || null,
       instagramUrl: this.validateUrl(artist.instagramUrl) || null,
       status: this.validateEnum(artist.status, ['active', 'inactive', 'upcoming']) || 'active',
-      joinedDate: this.validateDate(artist.joinedDate) || null
+      joinedDate: this.validateDate(artist.joinedDate) || null,
     };
   }
 
@@ -62,9 +62,9 @@ export class DataValidator {
       streamingLinks: {
         spotify: this.validateUrl(release.streamingLinks?.spotify) || null,
         appleMusic: this.validateUrl(release.streamingLinks?.appleMusic) || null,
-        youtubeMusic: this.validateUrl(release.streamingLinks?.youtubeMusic) || null
+        youtubeMusic: this.validateUrl(release.streamingLinks?.youtubeMusic) || null,
       },
-      streams: this.validateNumber(release.streams, 0) || 0
+      streams: this.validateNumber(release.streams, 0) || 0,
     };
   }
 
@@ -86,7 +86,7 @@ export class DataValidator {
       artist: this.sanitizeString(event.artist) || null,
       description: this.sanitizeString(event.description, 500) || '',
       ticketUrl: this.validateUrl(event.ticketUrl) || null,
-      imageUrl: this.validateUrl(event.imageUrl) || null
+      imageUrl: this.validateUrl(event.imageUrl) || null,
     };
   }
 
@@ -107,7 +107,7 @@ export class DataValidator {
       publishDate: this.validateDate(post.publishDate) || new Date().toISOString(),
       url: this.validateUrl(post.url),
       imageUrl: this.validateUrl(post.imageUrl) || null,
-      category: this.sanitizeString(post.category) || 'General'
+      category: this.sanitizeString(post.category) || 'General',
     };
   }
 
@@ -127,7 +127,7 @@ export class DataValidator {
       service: this.sanitizeString(testimonial.service) || 'General',
       rating: this.validateNumber(testimonial.rating, 1, 5) || 5,
       date: this.validateDate(testimonial.date) || new Date().toISOString(),
-      imageUrl: this.validateUrl(testimonial.imageUrl) || null
+      imageUrl: this.validateUrl(testimonial.imageUrl) || null,
     };
   }
 
@@ -142,7 +142,7 @@ export class DataValidator {
       nextAvailableSlot: this.sanitizeString(availability.nextAvailableSlot) || 'Contact us',
       bookingUrl: this.validateUrl(availability.bookingUrl) || 'https://hlpfl.org/contact',
       estimatedWaitTime: this.sanitizeString(availability.estimatedWaitTime) || 'Varies',
-      currentCapacity: this.sanitizeString(availability.currentCapacity) || 'Available'
+      currentCapacity: this.sanitizeString(availability.currentCapacity) || 'Available',
     };
   }
 
@@ -155,17 +155,23 @@ export class DataValidator {
     return {
       basePrice: this.sanitizeString(pricing.basePrice) || 'Contact for quote',
       currency: this.validateEnum(pricing.currency, ['USD', 'EUR', 'GBP']) || 'USD',
-      packages: Array.isArray(pricing.packages) ? pricing.packages.map(pkg => ({
-        name: this.sanitizeString(pkg.name),
-        price: this.sanitizeString(pkg.price),
-        features: Array.isArray(pkg.features) ? pkg.features.map(f => this.sanitizeString(f)) : []
-      })) : [],
+      packages: Array.isArray(pricing.packages)
+        ? pricing.packages.map((pkg) => ({
+            name: this.sanitizeString(pkg.name),
+            price: this.sanitizeString(pkg.price),
+            features: Array.isArray(pkg.features)
+              ? pkg.features.map((f) => this.sanitizeString(f))
+              : [],
+          }))
+        : [],
       customQuote: Boolean(pricing.customQuote),
-      discounts: Array.isArray(pricing.discounts) ? pricing.discounts.map(d => ({
-        name: this.sanitizeString(d.name),
-        amount: this.sanitizeString(d.amount),
-        validUntil: this.validateDate(d.validUntil) || null
-      })) : []
+      discounts: Array.isArray(pricing.discounts)
+        ? pricing.discounts.map((d) => ({
+            name: this.sanitizeString(d.name),
+            amount: this.sanitizeString(d.amount),
+            validUntil: this.validateDate(d.validUntil) || null,
+          }))
+        : [],
     };
   }
 
@@ -177,21 +183,21 @@ export class DataValidator {
    */
   static sanitizeString(str, maxLength = null) {
     if (typeof str !== 'string') return '';
-    
+
     // Remove HTML tags
     let sanitized = str.replace(/<[^>]*>/g, '');
-    
+
     // Remove potentially dangerous characters
     sanitized = sanitized.replace(/[<>&quot;']/g, '');
-    
+
     // Trim whitespace
     sanitized = sanitized.trim();
-    
+
     // Limit length
     if (maxLength && sanitized.length > maxLength) {
       sanitized = sanitized.substring(0, maxLength) + '...';
     }
-    
+
     return sanitized;
   }
 
@@ -202,7 +208,7 @@ export class DataValidator {
    */
   static validateUrl(url) {
     if (!url || typeof url !== 'string') return null;
-    
+
     try {
       const parsed = new URL(url);
       // Only allow http and https protocols
@@ -222,7 +228,7 @@ export class DataValidator {
    */
   static validateDate(date) {
     if (!date) return null;
-    
+
     try {
       const parsed = new Date(date);
       if (isNaN(parsed.getTime())) {
@@ -244,10 +250,10 @@ export class DataValidator {
   static validateNumber(num, min = null, max = null) {
     const parsed = Number(num);
     if (isNaN(parsed)) return null;
-    
+
     if (min !== null && parsed < min) return min;
     if (max !== null && parsed > max) return max;
-    
+
     return parsed;
   }
 
@@ -259,10 +265,10 @@ export class DataValidator {
    */
   static validateEnum(value, allowedValues) {
     if (!value || typeof value !== 'string') return null;
-    
+
     const normalized = value.toLowerCase();
-    const found = allowedValues.find(v => v.toLowerCase() === normalized);
-    
+    const found = allowedValues.find((v) => v.toLowerCase() === normalized);
+
     return found || null;
   }
 
@@ -273,7 +279,7 @@ export class DataValidator {
    */
   static validateEmail(email) {
     if (!email || typeof email !== 'string') return null;
-    
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email) ? email.toLowerCase() : null;
   }
@@ -285,13 +291,13 @@ export class DataValidator {
    */
   static validatePhone(phone) {
     if (!phone || typeof phone !== 'string') return null;
-    
+
     // Remove all non-digit characters
     const digits = phone.replace(/\D/g, '');
-    
+
     // Check if it's a valid length (10-15 digits)
     if (digits.length < 10 || digits.length > 15) return null;
-    
+
     return phone;
   }
 
@@ -303,7 +309,7 @@ export class DataValidator {
    */
   static validateArray(items, validatorFn) {
     if (!Array.isArray(items)) return [];
-    
+
     const validated = [];
     for (const item of items) {
       try {
@@ -316,7 +322,7 @@ export class DataValidator {
         // Skip invalid items
       }
     }
-    
+
     return validated;
   }
 
@@ -329,7 +335,7 @@ export class DataValidator {
     if (!message || typeof message !== 'string') {
       throw new Error('Invalid message');
     }
-    
+
     // Trim and limit length
     let sanitized = message.trim();
     if (sanitized.length === 0) {
@@ -338,10 +344,10 @@ export class DataValidator {
     if (sanitized.length > 2000) {
       sanitized = sanitized.substring(0, 2000);
     }
-    
+
     // Remove potentially dangerous content
     sanitized = this.sanitizeString(sanitized);
-    
+
     return sanitized;
   }
 
@@ -354,17 +360,17 @@ export class DataValidator {
     if (!sessionId || typeof sessionId !== 'string') {
       throw new Error('Invalid session ID');
     }
-    
+
     // Session ID should be alphanumeric with optional hyphens/underscores
     const sessionIdRegex = /^[a-zA-Z0-9_-]+$/;
     if (!sessionIdRegex.test(sessionId)) {
       throw new Error('Invalid session ID format');
     }
-    
+
     if (sessionId.length > 100) {
       throw new Error('Session ID too long');
     }
-    
+
     return sessionId;
   }
 }

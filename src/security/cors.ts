@@ -22,23 +22,13 @@ export const DEFAULT_CORS_OPTIONS: CorsOptions = {
     'https://hlpfl.io',
     'https://www.hlpfl.io',
     'http://localhost:3000',
-    'http://localhost:8080'
+    'http://localhost:8080',
   ],
   allowedMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: [
-    'Content-Type',
-    'Authorization',
-    'X-Requested-With',
-    'Accept',
-    'Origin'
-  ],
-  exposedHeaders: [
-    'X-RateLimit-Limit',
-    'X-RateLimit-Remaining',
-    'X-RateLimit-Reset'
-  ],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  exposedHeaders: ['X-RateLimit-Limit', 'X-RateLimit-Remaining', 'X-RateLimit-Reset'],
   maxAge: 86400, // 24 hours
-  credentials: true
+  credentials: true,
 };
 
 /**
@@ -47,23 +37,26 @@ export const DEFAULT_CORS_OPTIONS: CorsOptions = {
  * @param allowedOrigins - List of allowed origins or '*'
  * @returns True if origin is allowed
  */
-export function isOriginAllowed(
-  origin: string | null,
-  allowedOrigins: string[] | '*'
-): boolean {
-  if (!origin) return false;
-  if (allowedOrigins === '*') return true;
-  
-  return allowedOrigins.some(allowed => {
+export function isOriginAllowed(origin: string | null, allowedOrigins: string[] | '*'): boolean {
+  if (!origin) {
+    return false;
+  }
+  if (allowedOrigins === '*') {
+    return true;
+  }
+
+  return allowedOrigins.some((allowed) => {
     // Exact match
-    if (allowed === origin) return true;
-    
+    if (allowed === origin) {
+      return true;
+    }
+
     // Wildcard subdomain match (e.g., *.hlpfl.org)
     if (allowed.startsWith('*.')) {
       const domain = allowed.substring(2);
       return origin.endsWith(domain);
     }
-    
+
     return false;
   });
 }
@@ -144,7 +137,7 @@ export function handlePreflight(
 
   return new Response(null, {
     status: 204,
-    headers
+    headers,
   });
 }
 
@@ -188,13 +181,13 @@ export function createCorsMiddleware(options: CorsOptions = DEFAULT_CORS_OPTIONS
       return new Response(
         JSON.stringify({
           error: 'Forbidden',
-          message: 'Origin not allowed'
+          message: 'Origin not allowed',
         }),
         {
           status: 403,
           headers: {
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
         }
       );
     }

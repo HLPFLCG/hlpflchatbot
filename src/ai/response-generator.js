@@ -34,7 +34,7 @@ export class AIResponseGenerator {
         sentiment: sentiment,
         relevantInfo: relevantInfo,
         conversationHistory: context.conversationHistory || [],
-        userProfile: context.userProfile || {}
+        userProfile: context.userProfile || {},
       };
 
       // Build prompt
@@ -43,7 +43,7 @@ export class AIResponseGenerator {
       // Generate response
       const response = await this.openai.createChatCompletion(messages, {
         temperature: this.temperature,
-        maxTokens: this.maxTokens
+        maxTokens: this.maxTokens,
       });
 
       const responseText = this.openai.extractText(response);
@@ -54,7 +54,7 @@ export class AIResponseGenerator {
       return formattedResponse;
     } catch (error) {
       console.error('Response generation error:', error);
-      
+
       // Fallback to template-based response
       return this.fallbackResponse(intent, entities, message);
     }
@@ -70,20 +70,20 @@ export class AIResponseGenerator {
     const info = {};
 
     try {
-      switch(intent) {
+      switch (intent) {
         case 'company_info':
           info.stats = await this.liveData.getCompanyStats();
           info.contact = {
             email: 'contact@hlpflrecords.com',
             phone: '+1 (555) 123-4567',
-            website: 'https://hlpfl.org'
+            website: 'https://hlpfl.org',
           };
           break;
 
         case 'artist_roster':
           info.artists = await this.liveData.getArtistRoster();
           if (entities.genre) {
-            info.artists = info.artists.filter(a => 
+            info.artists = info.artists.filter((a) =>
               a.genre.toLowerCase().includes(entities.genre.toLowerCase())
             );
           }
@@ -117,14 +117,14 @@ export class AIResponseGenerator {
               'Fill out the submission form',
               'Include links to your music',
               'Add a brief bio',
-              'Our A&R team reviews within 1-2 weeks'
+              'Our A&R team reviews within 1-2 weeks',
             ],
             requirements: [
               'High-quality recordings',
               'Original music',
               'Artist bio',
-              'Social media links'
-            ]
+              'Social media links',
+            ],
           };
           break;
 
@@ -165,16 +165,16 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
 
     messages.push({
       role: 'system',
-      content: systemPrompt
+      content: systemPrompt,
     });
 
     // Add conversation history if available
     if (context.conversationHistory && context.conversationHistory.length > 0) {
       const recentHistory = context.conversationHistory.slice(-3);
-      recentHistory.forEach(msg => {
+      recentHistory.forEach((msg) => {
         messages.push({
           role: msg.role,
-          content: msg.content
+          content: msg.content,
         });
       });
     }
@@ -182,7 +182,7 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
     // User message
     messages.push({
       role: 'user',
-      content: message
+      content: message,
     });
 
     return messages;
@@ -199,7 +199,7 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
     const response = {
       text: responseText,
       intent: intent,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     // Add quick actions based on intent
@@ -222,41 +222,47 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
       artist_submission: [
         { label: 'Submit Music', url: 'https://hlpfl.org/contact', type: 'primary' },
         { label: 'View Requirements', url: 'https://hlpfl.org/requirements', type: 'secondary' },
-        { label: 'See Success Stories', url: 'https://hlpfl.org/artists', type: 'secondary' }
+        { label: 'See Success Stories', url: 'https://hlpfl.org/artists', type: 'secondary' },
       ],
       service_inquiry: [
         { label: 'View All Services', url: 'https://hlpfl.org/services', type: 'primary' },
         { label: 'Get a Quote', url: 'https://hlpfl.org/quote', type: 'primary' },
-        { label: 'Schedule Consultation', url: 'https://hlpfl.org/schedule', type: 'secondary' }
+        { label: 'Schedule Consultation', url: 'https://hlpfl.org/schedule', type: 'secondary' },
       ],
       booking_request: [
         { label: 'Book Studio Time', url: 'https://hlpfl.org/booking', type: 'primary' },
         { label: 'View Availability', url: 'https://hlpfl.org/calendar', type: 'secondary' },
-        { label: 'Contact Team', url: 'https://hlpfl.org/contact', type: 'secondary' }
+        { label: 'Contact Team', url: 'https://hlpfl.org/contact', type: 'secondary' },
       ],
       pricing_inquiry: [
         { label: 'View Pricing', url: 'https://hlpfl.org/pricing', type: 'primary' },
-        { label: 'Get Custom Quote', url: 'https://hlpfl.org/quote', type: 'primary' }
+        { label: 'Get Custom Quote', url: 'https://hlpfl.org/quote', type: 'primary' },
       ],
       artist_roster: [
         { label: 'View All Artists', url: 'https://hlpfl.org/artists', type: 'primary' },
-        { label: 'Listen on Spotify', url: 'https://open.spotify.com/user/hlpflrecords', type: 'secondary' }
+        {
+          label: 'Listen on Spotify',
+          url: 'https://open.spotify.com/user/hlpflrecords',
+          type: 'secondary',
+        },
       ],
       events_inquiry: [
         { label: 'View Events', url: 'https://hlpfl.org/events', type: 'primary' },
-        { label: 'Get Tickets', url: 'https://hlpfl.org/tickets', type: 'secondary' }
+        { label: 'Get Tickets', url: 'https://hlpfl.org/tickets', type: 'secondary' },
       ],
       contact_request: [
         { label: 'Contact Us', url: 'https://hlpfl.org/contact', type: 'primary' },
         { label: 'Email Us', url: 'mailto:contact@hlpflrecords.com', type: 'secondary' },
-        { label: 'Call Us', url: 'tel:+15551234567', type: 'secondary' }
-      ]
+        { label: 'Call Us', url: 'tel:+15551234567', type: 'secondary' },
+      ],
     };
 
-    return actions[intent] || [
-      { label: 'Learn More', url: 'https://hlpfl.org', type: 'primary' },
-      { label: 'Contact Us', url: 'https://hlpfl.org/contact', type: 'secondary' }
-    ];
+    return (
+      actions[intent] || [
+        { label: 'Learn More', url: 'https://hlpfl.org', type: 'primary' },
+        { label: 'Contact Us', url: 'https://hlpfl.org/contact', type: 'secondary' },
+      ]
+    );
   }
 
   /**
@@ -269,35 +275,37 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
       company_info: [
         'What services do you offer?',
         'How can I submit my music?',
-        'Who are your current artists?'
+        'Who are your current artists?',
       ],
       artist_submission: [
         'What are the submission requirements?',
         'How long does the review process take?',
-        'What happens after I submit?'
+        'What happens after I submit?',
       ],
       service_inquiry: [
         'How much does it cost?',
         'Can I book a consultation?',
-        'What\'s included in the service?'
+        "What's included in the service?",
       ],
       artist_roster: [
         'What genres do you work with?',
         'Can I hear some of their music?',
-        'How do artists join HLPFL?'
+        'How do artists join HLPFL?',
       ],
       events_inquiry: [
         'How can I get tickets?',
         'Are there any upcoming showcases?',
-        'Can I perform at an event?'
-      ]
+        'Can I perform at an event?',
+      ],
     };
 
-    return followUps[intent] || [
-      'Tell me more about HLPFL Records',
-      'How can you help my music career?',
-      'What makes HLPFL different?'
-    ];
+    return (
+      followUps[intent] || [
+        'Tell me more about HLPFL Records',
+        'How can you help my music career?',
+        'What makes HLPFL different?',
+      ]
+    );
   }
 
   /**
@@ -309,17 +317,23 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
    */
   async fallbackResponse(intent, entities, message) {
     const templates = {
-      greeting: "Hello! Welcome to HLPFL Records. I'm here to help you with any questions about our artists, services, or how to submit your music. What can I assist you with today?",
-      
-      artist_submission: "Great question! We're always excited to discover new talent. Visit hlpfl.org/contact to submit your music. Our A&R team reviews all submissions within 1-2 weeks.",
-      
-      service_inquiry: "HLPFL Records provides comprehensive music business solutions including Artist Development, Music Production, Global Distribution, Publishing & Rights, Marketing & Promotion, and Career Management. Which area interests you most?",
-      
-      company_info: "HLPFL Records is a premier record label founded in 2009 in Grand Rapids, Michigan. We've helped 50+ artists achieve over 1 billion streams worldwide. Our mission is elevating artists to global recognition.",
-      
-      contact_request: "You can reach us at contact@hlpflrecords.com or call +1 (555) 123-4567. We're available Monday-Friday, 9 AM - 6 PM EST. Visit hlpfl.org/contact for more options.",
-      
-      fallback: "I'd be happy to help you learn about HLPFL Records! You can ask about our services, artists, how to submit music, or company information. What would you like to know?"
+      greeting:
+        "Hello! Welcome to HLPFL Records. I'm here to help you with any questions about our artists, services, or how to submit your music. What can I assist you with today?",
+
+      artist_submission:
+        "Great question! We're always excited to discover new talent. Visit hlpfl.org/contact to submit your music. Our A&R team reviews all submissions within 1-2 weeks.",
+
+      service_inquiry:
+        'HLPFL Records provides comprehensive music business solutions including Artist Development, Music Production, Global Distribution, Publishing & Rights, Marketing & Promotion, and Career Management. Which area interests you most?',
+
+      company_info:
+        "HLPFL Records is a premier record label founded in 2009 in Grand Rapids, Michigan. We've helped 50+ artists achieve over 1 billion streams worldwide. Our mission is elevating artists to global recognition.",
+
+      contact_request:
+        "You can reach us at contact@hlpflrecords.com or call +1 (555) 123-4567. We're available Monday-Friday, 9 AM - 6 PM EST. Visit hlpfl.org/contact for more options.",
+
+      fallback:
+        "I'd be happy to help you learn about HLPFL Records! You can ask about our services, artists, how to submit music, or company information. What would you like to know?",
     };
 
     const text = templates[intent] || templates.fallback;
@@ -330,7 +344,7 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
       timestamp: new Date().toISOString(),
       quickActions: this.getQuickActions(intent, {}),
       suggestedFollowUps: this.getSuggestedFollowUps(intent),
-      fallback: true
+      fallback: true,
     };
   }
 
@@ -345,19 +359,15 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
       const context = {
         userProfile: userProfile,
         conversationHistory: conversationHistory.slice(-5),
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       const messages = buildPrompt('proactiveSuggestion', { context });
 
-      const response = await this.openai.completeJSON(
-        messages[0].content,
-        messages[1].content,
-        {
-          temperature: 0.7,
-          maxTokens: 200
-        }
-      );
+      const response = await this.openai.completeJSON(messages[0].content, messages[1].content, {
+        temperature: 0.7,
+        maxTokens: 200,
+      });
 
       return Array.isArray(response) ? response : [];
     } catch (error) {
@@ -386,8 +396,8 @@ ${context.sentiment.urgency === 'high' ? 'NOTE: User has HIGH urgency - prioriti
         'events_inquiry',
         'contact_request',
         'testimonial_request',
-        'career_advice'
-      ]
+        'career_advice',
+      ],
     };
   }
 }

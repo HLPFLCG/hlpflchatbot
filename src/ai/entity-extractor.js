@@ -38,14 +38,10 @@ export class AIEntityExtractor {
       }
 
       // Call OpenAI with JSON response format
-      const response = await this.openai.completeJSON(
-        messages[0].content,
-        messages[1].content,
-        {
-          temperature: 0.3,
-          maxTokens: 200
-        }
-      );
+      const response = await this.openai.completeJSON(messages[0].content, messages[1].content, {
+        temperature: 0.3,
+        maxTokens: 200,
+      });
 
       // Validate and normalize entities
       const entities = this.validateEntities(response);
@@ -58,7 +54,7 @@ export class AIEntityExtractor {
       return entities;
     } catch (error) {
       console.error('Entity extraction error:', error);
-      
+
       // Fallback to rule-based extraction
       return this.fallbackExtraction(message);
     }
@@ -122,23 +118,23 @@ export class AIEntityExtractor {
    */
   normalizeServiceType(serviceType) {
     const normalized = String(serviceType).toLowerCase().trim();
-    
+
     const serviceMap = {
-      'production': 'music_production',
-      'recording': 'music_production',
-      'studio': 'music_production',
-      'distribution': 'global_distribution',
-      'release': 'global_distribution',
-      'development': 'artist_development',
-      'coaching': 'artist_development',
-      'marketing': 'marketing_promotion',
-      'promotion': 'marketing_promotion',
+      production: 'music_production',
+      recording: 'music_production',
+      studio: 'music_production',
+      distribution: 'global_distribution',
+      release: 'global_distribution',
+      development: 'artist_development',
+      coaching: 'artist_development',
+      marketing: 'marketing_promotion',
+      promotion: 'marketing_promotion',
       'social media': 'marketing_promotion',
-      'publishing': 'publishing_rights',
-      'rights': 'publishing_rights',
-      'copyright': 'publishing_rights',
-      'management': 'career_management',
-      'career': 'career_management'
+      publishing: 'publishing_rights',
+      rights: 'publishing_rights',
+      copyright: 'publishing_rights',
+      management: 'career_management',
+      career: 'career_management',
     };
 
     for (const [key, value] of Object.entries(serviceMap)) {
@@ -157,18 +153,18 @@ export class AIEntityExtractor {
    */
   normalizeGenre(genre) {
     const normalized = String(genre).toLowerCase().trim();
-    
+
     const genreMap = {
-      'hiphop': 'hip-hop',
+      hiphop: 'hip-hop',
       'hip hop': 'hip-hop',
-      'rap': 'hip-hop',
+      rap: 'hip-hop',
       'r&b': 'rnb',
       'r and b': 'rnb',
-      'edm': 'electronic',
-      'techno': 'electronic',
-      'house': 'electronic',
+      edm: 'electronic',
+      techno: 'electronic',
+      house: 'electronic',
       'indie rock': 'indie',
-      'alternative': 'indie'
+      alternative: 'indie',
     };
 
     return genreMap[normalized] || normalized;
@@ -181,33 +177,33 @@ export class AIEntityExtractor {
    */
   normalizeTimeline(timeline) {
     const timelineStr = String(timeline).toLowerCase();
-    
+
     // Extract urgency indicators
     const urgencyIndicators = {
-      'asap': 'immediate',
-      'urgent': 'immediate',
-      'immediately': 'immediate',
-      'soon': 'short-term',
+      asap: 'immediate',
+      urgent: 'immediate',
+      immediately: 'immediate',
+      soon: 'short-term',
       'this week': 'short-term',
       'this month': 'short-term',
       'next month': 'medium-term',
       'few months': 'medium-term',
-      'later': 'long-term',
-      'eventually': 'long-term'
+      later: 'long-term',
+      eventually: 'long-term',
     };
 
     for (const [key, value] of Object.entries(urgencyIndicators)) {
       if (timelineStr.includes(key)) {
         return {
           raw: timeline,
-          urgency: value
+          urgency: value,
         };
       }
     }
 
     return {
       raw: timeline,
-      urgency: 'unspecified'
+      urgency: 'unspecified',
     };
   }
 
@@ -218,17 +214,17 @@ export class AIEntityExtractor {
    */
   normalizeBudget(budget) {
     const budgetStr = String(budget).toLowerCase();
-    
+
     // Extract budget range
     const ranges = {
-      'low': { min: 0, max: 1000 },
-      'small': { min: 0, max: 1000 },
-      'limited': { min: 0, max: 1000 },
-      'medium': { min: 1000, max: 5000 },
-      'moderate': { min: 1000, max: 5000 },
-      'high': { min: 5000, max: 20000 },
-      'large': { min: 5000, max: 20000 },
-      'unlimited': { min: 20000, max: null }
+      low: { min: 0, max: 1000 },
+      small: { min: 0, max: 1000 },
+      limited: { min: 0, max: 1000 },
+      medium: { min: 1000, max: 5000 },
+      moderate: { min: 1000, max: 5000 },
+      high: { min: 5000, max: 20000 },
+      large: { min: 5000, max: 20000 },
+      unlimited: { min: 20000, max: null },
     };
 
     for (const [key, value] of Object.entries(ranges)) {
@@ -236,7 +232,7 @@ export class AIEntityExtractor {
         return {
           raw: budget,
           range: key,
-          ...value
+          ...value,
         };
       }
     }
@@ -248,13 +244,13 @@ export class AIEntityExtractor {
       return {
         raw: budget,
         amount: amount,
-        currency: budgetStr.includes('$') ? 'USD' : 'unspecified'
+        currency: budgetStr.includes('$') ? 'USD' : 'unspecified',
       };
     }
 
     return {
       raw: budget,
-      range: 'unspecified'
+      range: 'unspecified',
     };
   }
 
@@ -265,7 +261,7 @@ export class AIEntityExtractor {
    */
   normalizeUrgency(urgency) {
     const normalized = String(urgency).toLowerCase().trim();
-    
+
     if (['high', 'urgent', 'immediate', 'asap'].includes(normalized)) {
       return 'high';
     } else if (['medium', 'moderate', 'soon'].includes(normalized)) {
@@ -284,7 +280,7 @@ export class AIEntityExtractor {
    */
   normalizeExperienceLevel(level) {
     const normalized = String(level).toLowerCase().trim();
-    
+
     if (['beginner', 'new', 'starting', 'amateur'].includes(normalized)) {
       return 'beginner';
     } else if (['intermediate', 'some experience', 'developing'].includes(normalized)) {
@@ -306,7 +302,14 @@ export class AIEntityExtractor {
     const lowerMessage = message.toLowerCase();
 
     // Service type detection
-    const services = ['production', 'distribution', 'development', 'marketing', 'publishing', 'management'];
+    const services = [
+      'production',
+      'distribution',
+      'development',
+      'marketing',
+      'publishing',
+      'management',
+    ];
     for (const service of services) {
       if (lowerMessage.includes(service)) {
         entities.service_type = service;
@@ -315,7 +318,17 @@ export class AIEntityExtractor {
     }
 
     // Genre detection
-    const genres = ['pop', 'rock', 'hip-hop', 'rap', 'electronic', 'indie', 'jazz', 'country', 'rnb'];
+    const genres = [
+      'pop',
+      'rock',
+      'hip-hop',
+      'rap',
+      'electronic',
+      'indie',
+      'jazz',
+      'country',
+      'rnb',
+    ];
     for (const genre of genres) {
       if (lowerMessage.includes(genre)) {
         entities.genre = genre;
@@ -324,15 +337,27 @@ export class AIEntityExtractor {
     }
 
     // Urgency detection
-    if (lowerMessage.includes('urgent') || lowerMessage.includes('asap') || lowerMessage.includes('immediately')) {
+    if (
+      lowerMessage.includes('urgent') ||
+      lowerMessage.includes('asap') ||
+      lowerMessage.includes('immediately')
+    ) {
       entities.urgency = 'high';
     } else if (lowerMessage.includes('soon') || lowerMessage.includes('quickly')) {
       entities.urgency = 'medium';
     }
 
     // Budget detection
-    if (lowerMessage.includes('budget') || lowerMessage.includes('cost') || lowerMessage.includes('price')) {
-      if (lowerMessage.includes('low') || lowerMessage.includes('cheap') || lowerMessage.includes('affordable')) {
+    if (
+      lowerMessage.includes('budget') ||
+      lowerMessage.includes('cost') ||
+      lowerMessage.includes('price')
+    ) {
+      if (
+        lowerMessage.includes('low') ||
+        lowerMessage.includes('cheap') ||
+        lowerMessage.includes('affordable')
+      ) {
         entities.budget = { range: 'low' };
       } else if (lowerMessage.includes('high') || lowerMessage.includes('premium')) {
         entities.budget = { range: 'high' };
@@ -353,9 +378,7 @@ export class AIEntityExtractor {
     }
 
     const recentMessages = conversationHistory.slice(-3);
-    return recentMessages
-      .map(msg => `${msg.role}: ${msg.content}`)
-      .join('\n');
+    return recentMessages.map((msg) => `${msg.role}: ${msg.content}`).join('\n');
   }
 
   /**
@@ -364,11 +387,11 @@ export class AIEntityExtractor {
   getFromCache(message) {
     const key = this.getCacheKey(message);
     const cached = this.cache.get(key);
-    
+
     if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
       return cached.data;
     }
-    
+
     return null;
   }
 
@@ -376,7 +399,7 @@ export class AIEntityExtractor {
     const key = this.getCacheKey(message);
     this.cache.set(key, {
       data: data,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
   }
 
@@ -403,8 +426,8 @@ export class AIEntityExtractor {
         'location',
         'artist_name',
         'urgency',
-        'experience_level'
-      ]
+        'experience_level',
+      ],
     };
   }
 }

@@ -59,7 +59,7 @@ export interface IntentClassification {
   subIntents?: string[];
 }
 
-export type IntentCategory = 
+export type IntentCategory =
   | 'greeting'
   | 'service_inquiry'
   | 'artist_submission'
@@ -506,8 +506,7 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = 
-  Pick<T, Exclude<keyof T, Keys>> & 
+export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<T, Exclude<keyof T, Keys>> &
   {
     [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
   }[Keys];

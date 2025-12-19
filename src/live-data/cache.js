@@ -20,7 +20,7 @@ export class CacheManager {
   async get(key) {
     try {
       let cached;
-      
+
       if (this.storage instanceof Map) {
         cached = this.storage.get(key);
       } else {
@@ -28,19 +28,19 @@ export class CacheManager {
         const data = await this.storage.get(key, 'json');
         cached = data;
       }
-      
+
       if (!cached) {
         this.cacheMisses++;
         return null;
       }
-      
+
       // Check if expired
       if (cached.expiresAt && Date.now() > cached.expiresAt) {
         await this.delete(key);
         this.cacheMisses++;
         return null;
       }
-      
+
       this.cacheHits++;
       return cached.data;
     } catch (error) {
@@ -59,13 +59,13 @@ export class CacheManager {
    */
   async set(key, data, ttl = null) {
     try {
-      const expiresAt = Date.now() + ((ttl || this.defaultTTL) * 1000);
+      const expiresAt = Date.now() + (ttl || this.defaultTTL) * 1000;
       const cacheData = {
         data: data,
         cachedAt: Date.now(),
-        expiresAt: expiresAt
+        expiresAt: expiresAt,
       };
-      
+
       if (this.storage instanceof Map) {
         // Memory cache - check size limit
         if (this.storage.size >= this.maxCacheSize) {
@@ -75,7 +75,7 @@ export class CacheManager {
       } else {
         // Cloudflare KV
         await this.storage.put(key, JSON.stringify(cacheData), {
-          expirationTtl: ttl || this.defaultTTL
+          expirationTtl: ttl || this.defaultTTL,
         });
       }
     } catch (error) {
@@ -125,14 +125,14 @@ export class CacheManager {
    */
   getStats() {
     const total = this.cacheHits + this.cacheMisses;
-    const hitRate = total > 0 ? (this.cacheHits / total * 100).toFixed(2) : 0;
-    
+    const hitRate = total > 0 ? ((this.cacheHits / total) * 100).toFixed(2) : 0;
+
     return {
       hits: this.cacheHits,
       misses: this.cacheMisses,
       total: total,
       hitRate: `${hitRate}%`,
-      size: this.storage instanceof Map ? this.storage.size : 'N/A'
+      size: this.storage instanceof Map ? this.storage.size : 'N/A',
     };
   }
 
@@ -142,17 +142,17 @@ export class CacheManager {
    */
   async evictOldest() {
     if (!(this.storage instanceof Map)) return;
-    
+
     let oldestKey = null;
     let oldestTime = Infinity;
-    
+
     for (const [key, value] of this.storage.entries()) {
       if (value.cachedAt < oldestTime) {
         oldestTime = value.cachedAt;
         oldestKey = key;
       }
     }
-    
+
     if (oldestKey) {
       await this.delete(oldestKey);
     }
@@ -171,7 +171,7 @@ export class CacheManager {
     if (cached !== null) {
       return cached;
     }
-    
+
     // Fetch fresh data
     try {
       const data = await fetchFn();
@@ -193,17 +193,17 @@ export class CacheManager {
       console.warn('Pattern invalidation only supported for Map storage');
       return 0;
     }
-    
+
     let count = 0;
     const regex = new RegExp(pattern);
-    
+
     for (const key of this.storage.keys()) {
       if (regex.test(key)) {
         await this.delete(key);
         count++;
       }
     }
-    
+
     return count;
   }
 
@@ -214,9 +214,7 @@ export class CacheManager {
    * @returns {Promise<void>}
    */
   async warmUp(data, ttl = null) {
-    const promises = Object.entries(data).map(([key, value]) =>
-      this.set(key, value, ttl)
-    );
+    const promises = Object.entries(data).map(([key, value]) => this.set(key, value, ttl));
     await Promise.all(promises);
   }
 
@@ -251,9 +249,7 @@ export class CacheManager {
    * @returns {Promise<void>}
    */
   async setMultiple(data, ttl = null) {
-    const promises = Object.entries(data).map(([key, value]) =>
-      this.set(key, value, ttl)
-    );
+    const promises = Object.entries(data).map(([key, value]) => this.set(key, value, ttl));
     await Promise.all(promises);
   }
 }
@@ -287,9 +283,7 @@ export class CacheKeyGenerator {
   }
 
   static forTestimonials(category = null) {
-    return category 
-      ? `hlpfl:testimonials:${category}`
-      : 'hlpfl:testimonials:all';
+    return category ? `hlpfl:testimonials:${category}` : 'hlpfl:testimonials:all';
   }
 
   static forTeamMembers() {

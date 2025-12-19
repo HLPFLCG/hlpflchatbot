@@ -14,7 +14,7 @@ export class AIAssistant {
     // Initialize OpenAI client
     this.openai = new OpenAIClient(env.OPENAI_API_KEY, {
       model: options.model || 'gpt-4-turbo-preview',
-      maxRetries: options.maxRetries || 3
+      maxRetries: options.maxRetries || 3,
     });
 
     // Initialize AI components
@@ -41,16 +41,10 @@ export class AIAssistant {
       );
 
       // Step 2: Extract entities
-      const entities = await this.entityExtractor.extractEntities(
-        message,
-        context
-      );
+      const entities = await this.entityExtractor.extractEntities(message, context);
 
       // Step 3: Analyze sentiment
-      const sentiment = await this.sentimentAnalyzer.analyzeSentiment(
-        message,
-        context
-      );
+      const sentiment = await this.sentimentAnalyzer.analyzeSentiment(message, context);
 
       // Step 4: Generate response
       const response = await this.responseGenerator.generateResponse(
@@ -70,20 +64,26 @@ export class AIAssistant {
         response: response,
         timestamp: new Date().toISOString(),
         tokenUsage: this.openai.getTokenUsage(),
-        cost: this.openai.estimateCost()
+        cost: this.openai.estimateCost(),
       };
     } catch (error) {
       console.error('AI processing error:', error);
-      
+
       // Fallback response
       return {
         message: message,
         intent: { intent: 'fallback', confidence: 0, fallback: true },
         entities: {},
-        sentiment: { sentiment: 'neutral', confidence: 0.5, emotion: 'neutral', urgency: 'medium', tone: 'casual' },
+        sentiment: {
+          sentiment: 'neutral',
+          confidence: 0.5,
+          emotion: 'neutral',
+          urgency: 'medium',
+          tone: 'casual',
+        },
         response: await this.responseGenerator.fallbackResponse('fallback', {}, message),
         timestamp: new Date().toISOString(),
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -99,7 +99,7 @@ export class AIAssistant {
       intentClassifier: this.intentClassifier.getStats(),
       entityExtractor: this.entityExtractor.getStats(),
       sentimentAnalyzer: this.sentimentAnalyzer.getStats(),
-      responseGenerator: this.responseGenerator.getStats()
+      responseGenerator: this.responseGenerator.getStats(),
     };
   }
 
@@ -126,12 +126,12 @@ export class AIAssistant {
   async healthCheck() {
     const health = {
       openai: await this.openai.healthCheck(),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     return {
       healthy: health.openai,
-      details: health
+      details: health,
     };
   }
 }
@@ -156,7 +156,7 @@ export {
   AIIntentClassifier,
   AIEntityExtractor,
   AISentimentAnalyzer,
-  AIResponseGenerator
+  AIResponseGenerator,
 };
 
 export default AIAssistant;

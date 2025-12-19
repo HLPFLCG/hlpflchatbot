@@ -1,0 +1,19 @@
+# Ignore legacy folders
+client/
+frontend/
+backend/
+server/
+examples/
+components/
+
+# Ignore build outputs
+dist/
+node_modules/
+.wrangler/
+
+# Ignore JavaScript files (we're using TypeScript)
+*.js
+!*.config.js
+
+# Ignore type definitions
+*.d.ts

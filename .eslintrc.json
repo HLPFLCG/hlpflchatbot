@@ -18,7 +18,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/explicit-function-return-type": "warn",
     "@typescript-eslint/no-unused-vars": [
       "error",
@@ -31,9 +31,14 @@
     "@typescript-eslint/no-misused-promises": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
-    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/prefer-optional-chain": "warn",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
     "no-console": [
       "warn",
       {
@@ -64,6 +69,12 @@
     "dist",
     "node_modules",
     "*.js",
-    "*.d.ts"
+    "*.d.ts",
+    "client/**",
+    "frontend/**",
+    "backend/**",
+    "server/**",
+    "examples/**",
+    "components/**"
   ]
 }

@@ -22,15 +22,8 @@ export interface ValidationResult {
  * @param options - Sanitization options
  * @returns Sanitized string
  */
-export function sanitizeInput(
-  input: string,
-  options: SanitizationOptions = {}
-): string {
-  const {
-    maxLength = 2000,
-    allowHtml = false,
-    stripScripts = true
-  } = options;
+export function sanitizeInput(input: string, options: SanitizationOptions = {}): string {
+  const { maxLength = 2000, allowHtml = false, stripScripts = true } = options;
 
   if (!input || typeof input !== 'string') {
     return '';
@@ -75,7 +68,7 @@ export function escapeHtml(text: string): string {
     '>': '&gt;',
     '"': '&quot;',
     "'": '&#x27;',
-    '/': '&#x2F;'
+    '/': '&#x2F;',
   };
 
   return text.replace(/[&<>"'/]/g, (char) => htmlEscapeMap[char] || char);
@@ -89,17 +82,17 @@ export function escapeHtml(text: string): string {
 export function removeScripts(html: string): string {
   // Remove script tags
   let cleaned = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-  
+
   // Remove event handlers (onclick, onerror, etc.)
   cleaned = cleaned.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '');
   cleaned = cleaned.replace(/\s*on\w+\s*=\s*[^\s>]*/gi, '');
-  
+
   // Remove javascript: protocol
   cleaned = cleaned.replace(/javascript:/gi, '');
-  
+
   // Remove data: protocol (can be used for XSS)
   cleaned = cleaned.replace(/data:text\/html/gi, '');
-  
+
   return cleaned;
 }
 
@@ -111,10 +104,10 @@ export function removeScripts(html: string): string {
 export function removeDangerousUnicode(text: string): string {
   // Remove zero-width characters that can be used for obfuscation
   let cleaned = text.replace(/[\u200B-\u200D\uFEFF]/g, '');
-  
+
   // Remove right-to-left override characters
   cleaned = cleaned.replace(/[\u202A-\u202E]/g, '');
-  
+
   return cleaned;
 }
 
@@ -125,7 +118,7 @@ export function removeDangerousUnicode(text: string): string {
  */
 export function validateMessage(message: string): ValidationResult {
   const errors: string[] = [];
-  
+
   // Check if message exists
   if (!message || typeof message !== 'string') {
     errors.push('Message is required');
@@ -147,7 +140,7 @@ export function validateMessage(message: string): ValidationResult {
   const sanitized = sanitizeInput(message, {
     maxLength: 2000,
     allowHtml: false,
-    stripScripts: true
+    stripScripts: true,
   });
 
   // Check for suspicious patterns
@@ -158,7 +151,7 @@ export function validateMessage(message: string): ValidationResult {
   return {
     isValid: errors.length === 0,
     sanitized,
-    errors
+    errors,
   };
 }
 
@@ -178,10 +171,10 @@ export function containsSuspiciousPatterns(text: string): boolean {
     /eval\(/i,
     /expression\(/i,
     /vbscript:/i,
-    /data:text\/html/i
+    /data:text\/html/i,
   ];
 
-  return suspiciousPatterns.some(pattern => pattern.test(text));
+  return suspiciousPatterns.some((pattern) => pattern.test(text));
 }
 
 /**
@@ -198,15 +191,17 @@ export function sanitizeUrl(url: string): string {
 
   // Block dangerous protocols
   const dangerousProtocols = ['javascript:', 'data:', 'vbscript:', 'file:'];
-  if (dangerousProtocols.some(protocol => trimmed.startsWith(protocol))) {
+  if (dangerousProtocols.some((protocol) => trimmed.startsWith(protocol))) {
     return '';
   }
 
   // Only allow http, https, and relative URLs
-  if (!trimmed.startsWith('http://') && 
-      !trimmed.startsWith('https://') && 
-      !trimmed.startsWith('/') &&
-      !trimmed.startsWith('./')) {
+  if (
+    !trimmed.startsWith('http://') &&
+    !trimmed.startsWith('https://') &&
+    !trimmed.startsWith('/') &&
+    !trimmed.startsWith('./')
+  ) {
     return '';
   }
 
@@ -229,7 +224,7 @@ export function sanitizeObject<T extends Record<string, any>>(
     if (typeof value === 'string') {
       sanitized[key] = sanitizeInput(value, options);
     } else if (Array.isArray(value)) {
-      sanitized[key] = value.map(item => 
+      sanitized[key] = value.map((item) =>
         typeof item === 'string' ? sanitizeInput(item, options) : item
       );
     } else if (typeof value === 'object' && value !== null) {
@@ -259,7 +254,7 @@ export function isValidEmail(email: string): boolean {
  */
 export function isValidPhone(phone: string): boolean {
   // Remove common formatting characters
-  const cleaned = phone.replace(/[\s\-\(\)\.]/g, '');
+  const cleaned = phone.replace(/[\s\-().]/g, '');
   // Check if it's 10-15 digits (international format)
   return /^\+?\d{10,15}$/.test(cleaned);
 }

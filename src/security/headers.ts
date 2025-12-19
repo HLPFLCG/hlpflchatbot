@@ -30,7 +30,7 @@ export function getSecurityHeaders(): SecurityHeaders {
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-      "upgrade-insecure-requests"
+      'upgrade-insecure-requests',
     ].join('; '),
 
     // Prevents clickjacking attacks
@@ -54,11 +54,11 @@ export function getSecurityHeaders(): SecurityHeaders {
       'magnetometer=()',
       'microphone=()',
       'payment=()',
-      'usb=()'
+      'usb=()',
     ].join(', '),
 
     // Legacy XSS protection (for older browsers)
-    'X-XSS-Protection': '1; mode=block'
+    'X-XSS-Protection': '1; mode=block',
   };
 }
 
@@ -70,11 +70,11 @@ export function getSecurityHeaders(): SecurityHeaders {
 export function applySecurityHeaders(response: Response): Response {
   const headers = getSecurityHeaders();
   const newResponse = new Response(response.body, response);
-  
+
   Object.entries(headers).forEach(([key, value]) => {
     newResponse.headers.set(key, value);
   });
-  
+
   return newResponse;
 }
 
@@ -84,10 +84,7 @@ export function applySecurityHeaders(response: Response): Response {
  * @param init - Response initialization options
  * @returns Response with security headers
  */
-export function createSecureResponse(
-  body: BodyInit | null,
-  init?: ResponseInit
-): Response {
+export function createSecureResponse(body: BodyInit | null, init?: ResponseInit): Response {
   const response = new Response(body, init);
   return applySecurityHeaders(response);
 }
@@ -98,15 +95,12 @@ export function createSecureResponse(
  * @param status - HTTP status code
  * @returns Response with JSON body and security headers
  */
-export function createSecureJsonResponse(
-  data: any,
-  status: number = 200
-): Response {
+export function createSecureJsonResponse(data: any, status: number = 200): Response {
   const response = new Response(JSON.stringify(data), {
     status,
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
   return applySecurityHeaders(response);
 }

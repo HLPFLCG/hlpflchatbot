@@ -4,9 +4,9 @@
  */
 
 export interface RateLimitConfig {
-  windowMs: number;      // Time window in milliseconds
-  maxRequests: number;   // Maximum requests per window
-  message?: string;      // Error message when limit exceeded
+  windowMs: number; // Time window in milliseconds
+  maxRequests: number; // Maximum requests per window
+  message?: string; // Error message when limit exceeded
   skipSuccessfulRequests?: boolean;
   skipFailedRequests?: boolean;
 }
@@ -38,7 +38,7 @@ export class RateLimiter {
       maxRequests: config.maxRequests,
       message: config.message || 'Too many requests, please try again later',
       skipSuccessfulRequests: config.skipSuccessfulRequests || false,
-      skipFailedRequests: config.skipFailedRequests || false
+      skipFailedRequests: config.skipFailedRequests || false,
     };
 
     // Clean up old entries every minute
@@ -58,14 +58,16 @@ export class RateLimiter {
     let timestamps = this.requests.get(identifier) || [];
 
     // Remove timestamps outside the current window
-    timestamps = timestamps.filter(timestamp => timestamp > windowStart);
+    timestamps = timestamps.filter((timestamp) => timestamp > windowStart);
 
     // Check if limit exceeded
     const allowed = timestamps.length < this.config.maxRequests;
-    const remaining = Math.max(0, this.config.maxRequests - timestamps.length);
     const oldestTimestamp = timestamps[0] || now;
     const reset = oldestTimestamp + this.config.windowMs;
     const retryAfter = allowed ? undefined : Math.ceil((reset - now) / 1000);
+
+    // Calculate remaining BEFORE adding current request
+    const remaining = Math.max(0, this.config.maxRequests - timestamps.length - (allowed ? 1 : 0));
 
     // Add current request if allowed
     if (allowed) {
@@ -79,8 +81,8 @@ export class RateLimiter {
         limit: this.config.maxRequests,
         remaining,
         reset,
-        retryAfter
-      }
+        retryAfter,
+      },
     };
   }
 
@@ -111,8 +113,8 @@ export class RateLimiter {
     const windowStart = now - this.config.windowMs;
 
     for (const [identifier, timestamps] of this.requests.entries()) {
-      const validTimestamps = timestamps.filter(t => t > windowStart);
-      
+      const validTimestamps = timestamps.filter((t) => t > windowStart);
+
       if (validTimestamps.length === 0) {
         this.requests.delete(identifier);
       } else {
@@ -132,7 +134,7 @@ export class RateLimiter {
 
     return {
       totalIdentifiers: this.requests.size,
-      totalRequests
+      totalRequests,
     };
   }
 }
@@ -156,7 +158,7 @@ export function createRateLimitMiddleware(config: RateLimitConfig) {
         JSON.stringify({
           error: 'Too Many Requests',
           message: config.message || 'Rate limit exceeded',
-          retryAfter: result.info.retryAfter
+          retryAfter: result.info.retryAfter,
         }),
         {
           status: 429,
@@ -165,8 +167,8 @@ export function createRateLimitMiddleware(config: RateLimitConfig) {
             'X-RateLimit-Limit': result.info.limit.toString(),
             'X-RateLimit-Remaining': result.info.remaining.toString(),
             'X-RateLimit-Reset': result.info.reset.toString(),
-            'Retry-After': result.info.retryAfter?.toString() || '60'
-          }
+            'Retry-After': result.info.retryAfter?.toString() || '60',
+          },
         }
       );
     }
@@ -184,18 +186,25 @@ export function createRateLimitMiddleware(config: RateLimitConfig) {
 export function getIdentifier(request: Request): string {
   // Try to get IP from CF-Connecting-IP header (Cloudflare)
   const cfIp = request.headers.get('CF-Connecting-IP');
-  if (cfIp) return cfIp;
+  if (cfIp) {
+    return cfIp;
+  }
 
   // Try to get IP from X-Forwarded-For header
   const forwardedFor = request.headers.get('X-Forwarded-For');
   if (forwardedFor) {
     const ips = forwardedFor.split(',');
-    return ips[0].trim();
+    const firstIp = ips[0];
+    if (firstIp) {
+      return firstIp.trim();
+    }
   }
 
   // Try to get IP from X-Real-IP header
   const realIp = request.headers.get('X-Real-IP');
-  if (realIp) return realIp;
+  if (realIp) {
+    return realIp;
+  }
 
   // Fallback to a default identifier
   return 'unknown';
@@ -207,20 +216,17 @@ export function getIdentifier(request: Request): string {
  * @param info - Rate limit info
  * @returns Response with rate limit headers
  */
-export function addRateLimitHeaders(
-  response: Response,
-  info: RateLimitInfo
-): Response {
+export function addRateLimitHeaders(response: Response, info: RateLimitInfo): Response {
   const newResponse = new Response(response.body, response);
-  
+
   newResponse.headers.set('X-RateLimit-Limit', info.limit.toString());
   newResponse.headers.set('X-RateLimit-Remaining', info.remaining.toString());
   newResponse.headers.set('X-RateLimit-Reset', info.reset.toString());
-  
+
   if (info.retryAfter) {
     newResponse.headers.set('Retry-After', info.retryAfter.toString());
   }
-  
+
   return newResponse;
 }
 
@@ -251,7 +257,7 @@ export class MultiRateLimiter {
    */
   check(endpoint: string, identifier: string): RateLimitResult {
     const limiter = this.limiters.get(endpoint);
-    
+
     if (!limiter) {
       // No rate limit configured for this endpoint
       return {
@@ -259,8 +265,8 @@ export class MultiRateLimiter {
         info: {
           limit: Infinity,
           remaining: Infinity,
-          reset: Date.now()
-        }
+          reset: Date.now(),
+        },
       };
     }
 
@@ -285,27 +291,27 @@ export const DEFAULT_RATE_LIMITS = {
   api: {
     windowMs: 60 * 1000,
     maxRequests: 60,
-    message: 'Too many API requests, please try again later'
+    message: 'Too many API requests, please try again later',
   },
 
   // Chat endpoint: 20 requests per minute (AI is expensive)
   chat: {
     windowMs: 60 * 1000,
     maxRequests: 20,
-    message: 'Too many chat messages, please slow down'
+    message: 'Too many chat messages, please slow down',
   },
 
   // Authentication: 5 attempts per 15 minutes
   auth: {
     windowMs: 15 * 60 * 1000,
     maxRequests: 5,
-    message: 'Too many authentication attempts, please try again later'
+    message: 'Too many authentication attempts, please try again later',
   },
 
   // Strict limit for sensitive operations: 3 per hour
   strict: {
     windowMs: 60 * 60 * 1000,
     maxRequests: 3,
-    message: 'Rate limit exceeded for this operation'
-  }
+    message: 'Rate limit exceeded for this operation',
+  },
 };

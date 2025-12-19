@@ -15,7 +15,7 @@ export class OpenAIClient {
     this.tokenUsage = {
       prompt: 0,
       completion: 0,
-      total: 0
+      total: 0,
     };
   }
 
@@ -34,31 +34,31 @@ export class OpenAIClient {
       top_p: options.topP ?? 1,
       frequency_penalty: options.frequencyPenalty ?? 0,
       presence_penalty: options.presencePenalty ?? 0,
-      ...options
+      ...options,
     };
 
     let lastError;
     for (let attempt = 0; attempt < this.maxRetries; attempt++) {
       try {
         const response = await this.makeRequest('/chat/completions', requestBody);
-        
+
         // Track token usage
         if (response.usage) {
           this.tokenUsage.prompt += response.usage.prompt_tokens;
           this.tokenUsage.completion += response.usage.completion_tokens;
           this.tokenUsage.total += response.usage.total_tokens;
         }
-        
+
         this.requestCount++;
         return response;
       } catch (error) {
         lastError = error;
-        
+
         // Don't retry on certain errors
         if (error.status === 400 || error.status === 401 || error.status === 403) {
           throw error;
         }
-        
+
         // Exponential backoff
         if (attempt < this.maxRetries - 1) {
           const delay = Math.pow(2, attempt) * 1000;
@@ -66,7 +66,7 @@ export class OpenAIClient {
         }
       }
     }
-    
+
     throw lastError;
   }
 
@@ -78,15 +78,15 @@ export class OpenAIClient {
    */
   async makeRequest(endpoint, body) {
     const url = `${this.baseUrl}${endpoint}`;
-    
+
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify(body),
-      signal: AbortSignal.timeout(this.timeout)
+      signal: AbortSignal.timeout(this.timeout),
     });
 
     const data = await response.json();
@@ -133,9 +133,8 @@ export class OpenAIClient {
     return {
       ...this.tokenUsage,
       requestCount: this.requestCount,
-      averageTokensPerRequest: this.requestCount > 0 
-        ? Math.round(this.tokenUsage.total / this.requestCount)
-        : 0
+      averageTokensPerRequest:
+        this.requestCount > 0 ? Math.round(this.tokenUsage.total / this.requestCount) : 0,
     };
   }
 
@@ -148,21 +147,21 @@ export class OpenAIClient {
     // Pricing as of Dec 2024 (approximate)
     const pricing = {
       'gpt-4-turbo-preview': {
-        prompt: 0.01 / 1000,      // $0.01 per 1K tokens
-        completion: 0.03 / 1000    // $0.03 per 1K tokens
+        prompt: 0.01 / 1000, // $0.01 per 1K tokens
+        completion: 0.03 / 1000, // $0.03 per 1K tokens
       },
       'gpt-4': {
         prompt: 0.03 / 1000,
-        completion: 0.06 / 1000
+        completion: 0.06 / 1000,
       },
       'gpt-3.5-turbo': {
         prompt: 0.0005 / 1000,
-        completion: 0.0015 / 1000
-      }
+        completion: 0.0015 / 1000,
+      },
     };
 
     const modelPricing = pricing[model] || pricing['gpt-4-turbo-preview'];
-    
+
     const promptCost = this.tokenUsage.prompt * modelPricing.prompt;
     const completionCost = this.tokenUsage.completion * modelPricing.completion;
     const totalCost = promptCost + completionCost;
@@ -171,7 +170,7 @@ export class OpenAIClient {
       promptCost: promptCost.toFixed(4),
       completionCost: completionCost.toFixed(4),
       totalCost: totalCost.toFixed(4),
-      currency: 'USD'
+      currency: 'USD',
     };
   }
 
@@ -182,7 +181,7 @@ export class OpenAIClient {
     this.tokenUsage = {
       prompt: 0,
       completion: 0,
-      total: 0
+      total: 0,
     };
     this.requestCount = 0;
   }
@@ -193,7 +192,7 @@ export class OpenAIClient {
    * @returns {Promise<void>}
    */
   sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   /**
@@ -206,8 +205,8 @@ export class OpenAIClient {
     const messages = [
       {
         role: 'user',
-        content: prompt
-      }
+        content: prompt,
+      },
     ];
 
     const response = await this.createChatCompletion(messages, options);
@@ -225,12 +224,12 @@ export class OpenAIClient {
     const messages = [
       {
         role: 'system',
-        content: systemMessage
+        content: systemMessage,
       },
       {
         role: 'user',
-        content: userMessage
-      }
+        content: userMessage,
+      },
     ];
 
     const response = await this.createChatCompletion(messages, options);
@@ -248,18 +247,18 @@ export class OpenAIClient {
     const messages = [
       {
         role: 'system',
-        content: systemMessage
+        content: systemMessage,
       },
       {
         role: 'user',
-        content: userMessage
-      }
+        content: userMessage,
+      },
     ];
 
     // Force JSON response format if supported
     const requestOptions = {
       ...options,
-      response_format: { type: 'json_object' }
+      response_format: { type: 'json_object' },
     };
 
     const response = await this.createChatCompletion(messages, requestOptions);
