@@ -1,11 +1,11 @@
 name = "hlpfl-chatbot"
-main = "worker.js"
+main = "worker-enhanced.js"
 compatibility_date = "2023-12-01"
 
 # Variables for different environments
 [env.production]
 routes = [
-  { pattern = "hlpfl.io/api/*", zone_name = "hlpfl.io" }
+  { pattern = "hlpfl.io/*", zone_name = "hlpfl.io" }
 ]
 
 [env.staging]
@@ -27,6 +27,7 @@ routes = [
 
 # Environment variables
 [vars]
-ENVIRONMENT = "development"
+ENVIRONMENT = "production"
 COMPANY_NAME = "HLPFL Records"
 LOCATION = "Grand Rapids, Michigan"
+VERSION = "2.0.0"
