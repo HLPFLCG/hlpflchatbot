@@ -14,6 +14,42 @@ export interface Env {
   RATE_LIMIT_ENABLED?: string;
   CACHE_ENABLED?: string;
   CACHE?: KVNamespace | Map<string, any>;
+  DB?: D1Database;
+}
+
+// Cloudflare D1 Database Types
+export interface D1Database {
+  prepare(query: string): D1PreparedStatement;
+  dump(): Promise<ArrayBuffer>;
+  batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
+  exec(query: string): Promise<D1ExecResult>;
+}
+
+export interface D1PreparedStatement {
+  bind(...values: any[]): D1PreparedStatement;
+  first<T = unknown>(colName?: string): Promise<T | null>;
+  run<T = unknown>(): Promise<D1Result<T>>;
+  all<T = unknown>(): Promise<D1Result<T>>;
+  raw<T = unknown>(): Promise<T[]>;
+}
+
+export interface D1Result<T = unknown> {
+  results?: T[];
+  success: boolean;
+  meta: {
+    duration?: number;
+    size_after?: number;
+    rows_read?: number;
+    rows_written?: number;
+    last_row_id?: number;
+    changes?: number;
+  };
+  error?: string;
+}
+
+export interface D1ExecResult {
+  count: number;
+  duration: number;
 }
 
 /* ============================================
@@ -517,3 +553,164 @@ export type Nullable<T> = T | null;
 export type Optional<T> = T | undefined;
 
 export type AsyncFunction<T = any> = (...args: any[]) => Promise<T>;
+
+/* ============================================
+   MEMORY & CONVERSATION TYPES
+   ============================================ */
+
+export interface ConversationMessage {
+  id?: number;
+  sessionId: string;
+  userId?: string;
+  message: string;
+  response: string;
+  intent?: string;
+  entities?: ExtractedEntity[];
+  sentiment?: string;
+  confidence?: number;
+  ipAddress?: string;
+  userAgent?: string;
+  referer?: string;
+  createdAt?: string;
+}
+
+export interface ConversationHistoryQuery {
+  sessionId?: string;
+  userId?: string;
+  intent?: string;
+  startDate?: string;
+  endDate?: string;
+  limit?: number;
+  offset?: number;
+}
+
+export interface ConversationStats {
+  totalMessages: number;
+  uniqueSessions: number;
+  uniqueUsers: number;
+  avgConfidence: number;
+  sentimentDistribution: {
+    positive: number;
+    negative: number;
+    neutral: number;
+  };
+}
+
+export interface UserProfile {
+  id?: number;
+  sessionId: string;
+  userId?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  preferredGenres?: string[];
+  preferredServices?: string[];
+  budgetRange?: string;
+  timeline?: string;
+  location?: string;
+  totalMessages?: number;
+  totalSessions?: number;
+  avgSessionDuration?: number;
+  lastIntent?: string;
+  commonIntents?: string[];
+  engagementScore?: number;
+  conversionStage?: 'awareness' | 'consideration' | 'decision' | 'action';
+  isQualifiedLead?: boolean;
+  leadScore?: number;
+  contactPreference?: string;
+  bestContactTime?: string;
+  timezone?: string;
+  firstSeen?: string;
+  lastSeen?: string;
+  ipAddress?: string;
+  userAgent?: string;
+  referer?: string;
+  isActive?: boolean;
+  isBlocked?: boolean;
+  notes?: string;
+}
+
+export interface UserBehavior {
+  messageCount?: number;
+  sessionDuration?: number;
+  intentCount?: number;
+  sentimentScore?: number;
+  returnRate?: number;
+  lastIntent?: string;
+}
+
+export interface LeadScore {
+  score: number;
+  factors: Record<string, number>;
+  isQualified: boolean;
+  confidence: number;
+}
+
+export interface PersonalizationContext {
+  profile?: UserProfile;
+  conversationHistory: ConversationMessage[];
+  conversationSummary: {
+    totalMessages: number;
+    firstMessage: string | null;
+    lastMessage: string | null;
+    commonIntents: string[];
+    avgConfidence: number;
+    sentimentTrend: string;
+  };
+  leadScore: LeadScore;
+  recommendations: string[];
+  personalizedGreeting: string;
+  suggestedQuestions: string[];
+}
+
+export interface UserFeedback {
+  id?: number;
+  sessionId: string;
+  userId?: string;
+  conversationId?: number;
+  feedbackType: 'rating' | 'comment' | 'bug_report' | 'feature_request';
+  rating?: number;
+  comment?: string;
+  helpfulnessRating?: number;
+  accuracyRating?: number;
+  speedRating?: number;
+  friendlinessRating?: number;
+  feedbackSentiment?: string;
+  feedbackTopics?: string[];
+  issueCategory?: string;
+  issueSeverity?: 'low' | 'medium' | 'high' | 'critical';
+  isResolved?: boolean;
+  resolutionNotes?: string;
+  resolvedAt?: string;
+  createdAt?: string;
+  requiresFollowUp?: boolean;
+  followedUpAt?: string;
+  followUpNotes?: string;
+}
+
+export interface AnalyticsEventExtended extends AnalyticsEvent {
+  eventType: string;
+  eventCategory: 'engagement' | 'conversion' | 'technical' | 'user_action';
+  eventAction: string;
+  eventLabel?: string;
+  eventValue?: number;
+  eventData?: Record<string, any>;
+  pageUrl?: string;
+  pageTitle?: string;
+  referer?: string;
+  responseTime?: number;
+  apiEndpoint?: string;
+  httpStatus?: number;
+  errorMessage?: string;
+  errorStack?: string;
+  browser?: string;
+  deviceType?: 'desktop' | 'mobile' | 'tablet';
+  os?: string;
+  screenResolution?: string;
+  country?: string;
+  region?: string;
+  city?: string;
+  timezone?: string;
+  isProcessed?: boolean;
+  processedAt?: string;
+}

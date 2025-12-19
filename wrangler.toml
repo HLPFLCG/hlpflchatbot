@@ -19,11 +19,18 @@ routes = [
 # id = "your-kv-namespace-id"
 # preview_id = "your-preview-kv-namespace-id"
 
-# D1 database for analytics (optional)
+# D1 database for conversation memory and user profiles
+# Uncomment and configure after creating D1 database:
+# 1. Run: wrangler d1 create hlpfl-chatbot-db
+# 2. Copy the database_id from output
+# 3. Uncomment the section below and paste your database_id
+# 4. Run migrations: wrangler d1 execute hlpfl-chatbot-db --file=src/memory/migrations/001_create_conversation_history.sql
+#
 # [[d1_databases]]
-# binding = "CHAT_DB"
+# binding = "DB"
 # database_name = "hlpfl-chatbot-db"
-# database_id = "your-database-id"
+# database_id = "your-database-id-here"
+# preview_database_id = "your-preview-database-id-here"
 
 # Environment variables
 [vars]
