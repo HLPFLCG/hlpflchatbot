@@ -1,75 +1,599 @@
 {
   "intents": {
     "greeting": {
-      "keywords": ["hello", "hi", "hey", "greetings", "welcome", "good morning", "good afternoon", "howdy", "yo"],
-      "responses": ["greeting.friendly"],
-      "entities": ["time_of_day"]
+      "keywords": [
+        "hello",
+        "hi",
+        "hey",
+        "greetings",
+        "welcome",
+        "good morning",
+        "good afternoon",
+        "howdy",
+        "yo",
+        "what's up"
+      ],
+      "responses": [
+        "greeting.friendly"
+      ],
+      "entities": [
+        "time_of_day"
+      ]
     },
     "artist_submission": {
-      "keywords": ["submit", "submission", "demo", "music", "song", "track", "send music", "apply", "artist", "band", "interested"],
+      "keywords": [
+        "submit",
+        "submission",
+        "demo",
+        "music",
+        "song",
+        "track",
+        "send music",
+        "apply",
+        "artist",
+        "band",
+        "interested",
+        "join"
+      ],
       "sub_intents": {
-        "process": ["how", "process", "steps", "way", "method"],
-        "requirements": ["requirements", "need", "what", "criteria", "qualifications"],
-        "timeline": ["long", "when", "response time", "hear back", "timeline"],
-        "genre": ["genre", "style", "type of music", "sound", "accept"]
+        "process": [
+          "how",
+          "process",
+          "steps",
+          "way",
+          "method",
+          "submit"
+        ],
+        "requirements": [
+          "requirements",
+          "need",
+          "what",
+          "criteria",
+          "qualifications",
+          "need to submit"
+        ],
+        "timeline": [
+          "long",
+          "when",
+          "response time",
+          "hear back",
+          "timeline",
+          "how long"
+        ],
+        "genre": [
+          "genre",
+          "style",
+          "type of music",
+          "sound",
+          "accept",
+          "what genres"
+        ]
       },
-      "responses": ["artist_submission.process", "artist_submission.requirements", "artist_submission.genre"]
+      "responses": [
+        "artist_submission.process",
+        "artist_submission.requirements",
+        "artist_submission.genre"
+      ]
     },
     "services": {
-      "keywords": ["services", "offer", "provide", "help", "support", "development", "production", "distribution", "marketing", "promotion"],
+      "keywords": [
+        "services",
+        "offer",
+        "provide",
+        "help",
+        "support",
+        "development",
+        "production",
+        "distribution",
+        "marketing",
+        "promotion",
+        "tools"
+      ],
       "sub_intents": {
-        "development": ["development", "coaching", "training", "artist development", "vocal"],
-        "production": ["production", "recording", "studio", "mixing", "mastering", "music production"],
-        "distribution": ["distribution", "streaming", "spotify", "apple music", "platforms", "stores"],
-        "marketing": ["marketing", "promotion", "advertising", "social media", "campaign", "publicity"]
+        "social_media": [
+          "social media",
+          "instagram",
+          "tiktok",
+          "twitter",
+          "social media manager",
+          "posting"
+        ],
+        "link_in_bio": [
+          "link in bio",
+          "bio link",
+          "landing page",
+          "linktree"
+        ],
+        "distribution": [
+          "distribution",
+          "streaming",
+          "spotify",
+          "apple music",
+          "platforms",
+          "stores",
+          "get my music out"
+        ],
+        "management": [
+          "management",
+          "manager",
+          "support",
+          "guidance",
+          "help"
+        ],
+        "form_builder": [
+          "form",
+          "forms",
+          "email capture",
+          "contact form",
+          "booking"
+        ],
+        "music_vault": [
+          "vault",
+          "unreleased",
+          "stems",
+          "remix",
+          "collaboration"
+        ]
       },
-      "responses": ["services.development", "services.production", "services.distribution", "services.marketing"]
+      "responses": [
+        "services.social_media",
+        "services.link_in_bio",
+        "services.distribution",
+        "services.management",
+        "services.form_builder",
+        "services.music_vault"
+      ]
     },
     "company_info": {
-      "keywords": ["company", "about", "information", "who", "what", "history", "founded", "hlpfl", "record label"],
+      "keywords": [
+        "company",
+        "about",
+        "information",
+        "who",
+        "what",
+        "history",
+        "founded",
+        "hlpfl",
+        "record label",
+        "what is hlpfl",
+        "tell me about hlpfl"
+      ],
       "sub_intents": {
-        "about": ["about", "who", "what", "company"],
-        "differentiators": ["different", "special", "unique", "why", "compare", "better"],
-        "location": ["location", "where", "address", "office", "nashville"]
+        "about": [
+          "about",
+          "who",
+          "what",
+          "company",
+          "tell me about"
+        ],
+        "mission": [
+          "mission",
+          "purpose",
+          "why",
+          "goal"
+        ],
+        "differentiators": [
+          "different",
+          "special",
+          "unique",
+          "why",
+          "compare",
+          "better",
+          "what makes you different"
+        ],
+        "location": [
+          "location",
+          "where",
+          "address",
+          "office",
+          "based"
+        ],
+        "team": [
+          "team",
+          "who runs",
+          "founder",
+          "ceo",
+          "james"
+        ],
+        "philosophy": [
+          "philosophy",
+          "approach",
+          "values",
+          "beliefs"
+        ]
       },
-      "responses": ["company_info.about", "company_info.differentiators", "company_info.location"]
+      "responses": [
+        "company_info.about",
+        "company_info.mission",
+        "company_info.differentiators",
+        "company_info.location",
+        "company_info.team",
+        "company_info.philosophy"
+      ]
     },
     "contact": {
-      "keywords": ["contact", "reach", "email", "phone", "address", "call", "talk", "speak", "connect"],
+      "keywords": [
+        "contact",
+        "reach",
+        "email",
+        "phone",
+        "address",
+        "call",
+        "talk",
+        "speak",
+        "connect",
+        "get in touch"
+      ],
       "sub_intents": {
-        "general": ["contact", "reach", "general", "talk", "speak"],
-        "submissions": ["submissions", "submit music", "demo", "send"],
-        "business": ["business", "partnership", "press", "media", "inquiry"]
+        "general": [
+          "contact",
+          "reach",
+          "general",
+          "talk",
+          "speak"
+        ],
+        "submissions": [
+          "submissions",
+          "submit music",
+          "demo",
+          "send"
+        ],
+        "business": [
+          "business",
+          "partnership",
+          "press",
+          "media",
+          "inquiry"
+        ],
+        "support": [
+          "support",
+          "help",
+          "assistance"
+        ]
       },
-      "responses": ["contact.general", "contact.submissions", "contact.business"]
+      "responses": [
+        "contact.general",
+        "contact.submissions",
+        "contact.business",
+        "contact.support"
+      ]
     },
-    "career_advice": {
-      "keywords": ["advice", "tips", "help", "guidance", "career", "music career", "how to", "beginner", "starting", "networking"],
+    "featured_artist": {
+      "keywords": [
+        "prive",
+        "priv",
+        "featured artist",
+        "who is priv",
+        "priv artist",
+        "grand rapids",
+        "emerging artist"
+      ],
       "sub_intents": {
-        "beginner": ["beginner", "starting", "new", "first time", "how to start"],
-        "networking": ["networking", "connections", "meet people", "industry", "collaborate"],
-        "business": ["business", "money", "career", "professional", "industry advice"]
+        "about_priv": [
+          "priv",
+          "who is priv",
+          "tell me about priv",
+          "about priv"
+        ],
+        "music": [
+          "priv music",
+          "priv songs",
+          "priv releases",
+          "priv discography",
+          "priv tracks"
+        ],
+        "philosophy": [
+          "priv philosophy",
+          "priv quote",
+          "priv approach",
+          "priv style"
+        ]
       },
-      "responses": ["career_advice.beginner", "career_advice.networking", "career_advice.business"]
+      "responses": [
+        "featured_artist.about_priv",
+        "featured_artist.music",
+        "featured_artist.philosophy"
+      ]
     },
     "goodbye": {
-      "keywords": ["bye", "goodbye", "see you", "later", "farewell", "thanks", "thank you", "appreciate"],
-      "responses": ["farewell.friendly"]
+      "keywords": [
+        "bye",
+        "goodbye",
+        "see you",
+        "later",
+        "farewell",
+        "thanks",
+        "thank you",
+        "appreciate"
+      ],
+      "responses": [
+        "farewell.friendly"
+      ]
+    },
+    "career_advice": {
+      "keywords": [
+        "advice",
+        "tips",
+        "help",
+        "guidance",
+        "career",
+        "music career",
+        "how to",
+        "beginner",
+        "starting",
+        "networking",
+        "succeed"
+      ],
+      "sub_intents": {
+        "beginner": [
+          "beginner",
+          "starting",
+          "new",
+          "first time",
+          "how to start",
+          "just starting"
+        ],
+        "networking": [
+          "networking",
+          "connections",
+          "meet people",
+          "industry",
+          "collaborate"
+        ],
+        "business": [
+          "business",
+          "money",
+          "career",
+          "professional",
+          "industry advice"
+        ],
+        "marketing": [
+          "marketing",
+          "promotion",
+          "get fans",
+          "grow audience",
+          "social media"
+        ],
+        "contracts": [
+          "contracts",
+          "legal",
+          "deal",
+          "agreement",
+          "sign"
+        ],
+        "mental_health": [
+          "mental health",
+          "burnout",
+          "stress",
+          "wellness",
+          "balance"
+        ]
+      },
+      "responses": [
+        "career_advice.beginner",
+        "career_advice.networking",
+        "career_advice.business",
+        "career_advice.marketing",
+        "career_advice.contracts",
+        "career_advice.mental_health"
+      ]
+    },
+    "industry_problems": {
+      "keywords": [
+        "industry",
+        "problems",
+        "issues",
+        "challenges",
+        "royalties",
+        "contracts",
+        "gatekeepers",
+        "exploitation",
+        "crisis"
+      ],
+      "sub_intents": {
+        "royalties": [
+          "royalties",
+          "payouts",
+          "streaming",
+          "money",
+          "income",
+          "earnings"
+        ],
+        "contracts": [
+          "contracts",
+          "deals",
+          "labels",
+          "signing",
+          "agreement",
+          "legal"
+        ],
+        "gatekeepers": [
+          "gatekeepers",
+          "access",
+          "barriers",
+          "entry",
+          "getting noticed"
+        ],
+        "burnout": [
+          "burnout",
+          "stress",
+          "mental health",
+          "exhaustion",
+          "pressure"
+        ]
+      },
+      "responses": [
+        "industry_problems.royalties",
+        "industry_problems.contracts",
+        "industry_problems.gatekeepers",
+        "industry_problems.burnout"
+      ]
+    },
+    "hlpfl_solution": {
+      "keywords": [
+        "solution",
+        "hlpfl approach",
+        "tools not contracts",
+        "toolkit",
+        "alternative",
+        "different way"
+      ],
+      "sub_intents": {
+        "philosophy": [
+          "philosophy",
+          "tools not contracts",
+          "approach",
+          "values"
+        ],
+        "toolkit": [
+          "toolkit",
+          "tools",
+          "services",
+          "offerings"
+        ],
+        "benefits": [
+          "benefits",
+          "advantages",
+          "why choose",
+          "pros"
+        ]
+      },
+      "responses": [
+        "hlpfl_solution.philosophy",
+        "hlpfl_solution.toolkit",
+        "hlpfl_solution.benefits"
+      ]
+    },
+    "statistics": {
+      "keywords": [
+        "statistics",
+        "stats",
+        "data",
+        "numbers",
+        "percentage",
+        "how many",
+        "what percent",
+        "research"
+      ],
+      "sub_intents": {
+        "streaming": [
+          "streaming",
+          "royalties",
+          "payouts",
+          "platforms"
+        ],
+        "industry": [
+          "industry",
+          "market",
+          "revenue",
+          "growth"
+        ],
+        "mental_health": [
+          "mental health",
+          "burnout",
+          "wellness",
+          "artists"
+        ],
+        "contracts": [
+          "contracts",
+          "signing",
+          "labels",
+          "deals"
+        ]
+      },
+      "responses": [
+        "statistics.streaming",
+        "statistics.industry",
+        "statistics.mental_health",
+        "statistics.contracts"
+      ]
+    },
+    "artist_resources": {
+      "keywords": [
+        "resources",
+        "guide",
+        "tutorial",
+        "learn",
+        "how to",
+        "tips",
+        "help"
+      ],
+      "sub_intents": {
+        "marketing": [
+          "marketing",
+          "promotion",
+          "social media",
+          "fans"
+        ],
+        "production": [
+          "production",
+          "recording",
+          "studio",
+          "making music"
+        ],
+        "business": [
+          "business",
+          "money",
+          "management",
+          "legal"
+        ],
+        "wellness": [
+          "wellness",
+          "mental health",
+          "balance",
+          "self-care"
+        ]
+      },
+      "responses": [
+        "artist_resources.marketing",
+        "artist_resources.production",
+        "artist_resources.business",
+        "artist_resources.wellness"
+      ]
+    },
+    "unknown": {
+      "keywords": [],
+      "responses": [
+        "fallback.confused"
+      ]
     }
   },
   "entities": {
     "time_of_day": {
-      "morning": ["morning", "am", "sunrise"],
-      "afternoon": ["afternoon", "pm", "daytime"],
-      "evening": ["evening", "night", "tonight"]
+      "morning": [
+        "morning",
+        "am",
+        "sunrise"
+      ],
+      "afternoon": [
+        "afternoon",
+        "pm"
+      ],
+      "evening": [
+        "evening",
+        "night"
+      ]
     },
-    "genre": {
-      "rock": ["rock", "alternative", "indie rock"],
-      "pop": ["pop", "mainstream", "top 40"],
-      "hiphop": ["hip hop", "rap", "trap"],
-      "country": ["country", "nashville", "americana"],
-      "electronic": ["electronic", "edm", "techno", "house"],
-      "folk": ["folk", "acoustic", "singer-songwriter"]
+    "platform": {
+      "spotify": [
+        "spotify",
+        "spot"
+      ],
+      "apple_music": [
+        "apple music",
+        "itunes"
+      ],
+      "youtube": [
+        "youtube",
+        "yt"
+      ],
+      "instagram": [
+        "instagram",
+        "ig"
+      ],
+      "soundcloud": [
+        "soundcloud"
+      ]
     }
   }
 }
