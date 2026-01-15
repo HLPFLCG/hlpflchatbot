@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLPFL Records - Chatbot Integration Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(205, 139, 92, 0.1);
+            border-bottom: 2px solid #CD8B5C;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #CD8B5C;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #CD8B5C;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(205, 139, 92, 0.05);
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #CD8B5C, #B87A4D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #CD8B5C, #B87A4D);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(205, 139, 92, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(205, 139, 92, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(205, 139, 92, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: #CD8B5C;
+        }
+
+        .feature-card h3 {
+            color: #CD8B5C;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .feature-card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .integration-info {
+            background: rgba(205, 139, 92, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #CD8B5C;
+            margin-bottom: 60px;
+        }
+
+        .integration-info h2 {
+            color: #CD8B5C;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .integration-info p {
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #1A1A1A;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #3A3A3A;
+        }
+
+        .code-block code {
+            color: #CD8B5C;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .chatbot-demo {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .chatbot-demo h2 {
+            color: #CD8B5C;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            border-radius: 20px;
+            color: #00ff00;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(205, 139, 92, 0.05);
+            border-top: 2px solid #CD8B5C;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        footer a {
+            color: #CD8B5C;
+            text-decoration: none;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>HLPFL Records</h1>
+        <nav>
+            <a href="#integration">Integration</a>
+            <a href="#demo">Demo</a>
+            <a href="#docs">Documentation</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Tools, Not Contracts</h2>
+            <p>Build Your Career. Own Your Music. Keep Your Freedom.</p>
+            <a href="#integration" class="cta-button">See Integration Guide</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>🎵 Music Distribution</h3>
+                <p>Get your music on Spotify, Apple Music, and 150+ platforms. Keep 100% of your royalties.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Social Media Manager</h3>
+                <p>Unified dashboard for scheduling and analytics across all your social platforms.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔗 Link in Bio Tool</h3>
+                <p>One link to rule them all. Create custom landing pages for your music and brand.</p>
+            </div>
+        </section>
+
+        <section class="integration-info" id="integration">
+            <h2>🔧 Chatbot Integration Guide</h2>
+            <p>The HLPFL Chatbot is now integrated into this website! It provides instant support for artists, information about services, and answers to common questions.</p>
+            
+            <p><strong>Status:</strong> <span class="status-indicator"><span class="status-dot"></span> Live and Running</span></p>
+            
+            <h3>To add the chatbot to your website, add this code:</h3>
+            
+            <h4>1. Add to <code>&lt;head&gt;</code> section:</h4>
+            <div class="code-block">
+                <code>&lt;link rel="stylesheet" href="https://hlpfl.io/chat-widget.css"&gt;</code>
+            </div>
+            
+            <h4>2. Add before closing <code>&lt;/body&gt;</code> tag:</h4>
+            <div class="code-block">
+                <code>
+&lt;div id="hlpfl-chat-widget"&gt;&lt;/div&gt;<br>
+&lt;script src="https://hlpfl.io/chat-widget.js"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+&nbsp;&nbsp;HLPFLChat.init({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;apiUrl: 'https://hlpfl.io/api/chat',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#CD8B5C',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;companyName: 'HLPFL Records',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;showWelcomeMessage: true,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;welcomeMessage: 'Hi! 👋 Welcome to HLPFL Records. How can I help you today?'<br>
+&nbsp;&nbsp;});<br>
+&lt;/script&gt;
+                </code>
+            </div>
+        </section>
+
+        <section class="chatbot-demo" id="demo">
+            <h2>💬 Try the Chatbot</h2>
+            <p>Click the chat button in the bottom-right corner to try the HLPFL Chatbot!</p>
+            <p><strong>Test these messages:</strong></p>
+            <ul style="color: #888; margin-top: 10px; line-height: 2;">
+                <li>"hello" - Get a greeting</li>
+                <li>"What services do you offer?" - Learn about our services</li>
+                <li>"How do I submit my music?" - Get submission instructions</li>
+                <li>"contact" - Get contact information</li>
+                <li>"Tell me about your company" - Learn about HLPFL</li>
+                <li>"Who is PRIV?" - Learn about our featured artist</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HLPFL Records. All rights reserved.</p>
+        <p>Tools, Not Contracts. Independence, Not Ownership.</p>
+        <p><a href="https://hlpfl.org">Visit hlpfl.org</a></p>
+    </footer>
+
+    <!-- HLPFL Chat Widget - LOAD FROM LOCAL DEV SERVER FOR DEMO -->
+    <link rel="stylesheet" href="https://8787-c17108b7-f79e-4a81-b99e-15277a6a1ec8.proxy.daytona.works/chat-widget.css">
+    
+    <div id="hlpfl-chat-widget"></div>
+    
+    <script src="https://8787-c17108b7-f79e-4a81-b99e-15277a6a1ec8.proxy.daytona.works/chat-widget.js"></script>
+    <script>
+        HLPFLChat.init({
+            apiUrl: 'https://8787-c17108b7-f79e-4a81-b99e-15277a6a1ec8.proxy.daytona.works/api/chat',
+            position: 'bottom-right',
+            primaryColor: '#CD8B5C',
+            companyName: 'HLPFL Records',
+            showWelcomeMessage: true,
+            welcomeMessage: 'Hi! 👋 Welcome to HLPFL Records. How can I help you today?'
+        });
+    </script>
+</body>
+</html>

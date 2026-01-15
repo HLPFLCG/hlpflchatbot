@@ -1,11 +1,12 @@
 name = "hlpfl-chatbot"
-main = "worker-enhanced.ts"
+main = "worker-simple.ts"
 compatibility_date = "2023-12-01"
 
 # Variables for different environments
 [env.production]
 routes = [
-  { pattern = "hlpfl.io/*", zone_name = "hlpfl.io" }
+  { pattern = "hlpfl.io/*", zone_name = "hlpfl.io" },
+  { pattern = "hlpfl.org/*", zone_name = "hlpfl.org" }
 ]
 
 [env.staging]
