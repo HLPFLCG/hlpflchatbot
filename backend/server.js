@@ -34,6 +34,36 @@ try {
 const llmService = new LLMService(process.env.OPENAI_API_KEY);
 console.log(`LLM Service ${llmService.isEnabled() ? 'enabled' : 'disabled'}`);
 
+// Initialize Response Cache
+const responseCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes cache TTL
+
+function getCacheKey(message) {
+  return message.toLowerCase().trim();
+}
+
+function getCachedResponse(message) {
+  const key = getCacheKey(message);
+  const cached = responseCache.get(key);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    console.log(`Cache hit for: ${message}`);
+    return cached;
+  }
+  return null;
+}
+
+function setCachedResponse(message, response, intent, confidence, quickActions) {
+  const key = getCacheKey(message);
+  responseCache.set(key, {
+    response,
+    intent,
+    confidence,
+    quickActions,
+    timestamp: Date.now()
+  });
+  console.log(`Cached response for: ${message}`);
+}
+
 // Initialize NLP tools
 const tokenizer = new natural.WordTokenizer();
 const stemmer = natural.PorterStemmer;
